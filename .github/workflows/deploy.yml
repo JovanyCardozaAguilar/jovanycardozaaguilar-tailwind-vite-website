@@ -2,7 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]  
+    branches: [ "main" ]  # or "master"
+
+# 🔽 ADD THIS BLOCK to give write access
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -12,7 +16,7 @@ jobs:
       
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: 'npm'
           
       - run: npm ci
