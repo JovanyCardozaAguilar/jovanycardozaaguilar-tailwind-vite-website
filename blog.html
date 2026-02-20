@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<title>jovanycardozaaguilar-tailwind-vite-website</title>
+		<style>
+			/* 1. Base color for nav links – prevents initial blue flash */
+			nav a {
+				color: #4ade80; /* green-400 */
+				text-decoration: none;
+			}
+    			/* 2. Force text to black on hover – overrides any competing rule */
+    			nav a:hover {
+	    			color: black !important;
+    			}
+		</style>
+	</head>
+	<body style="overflow: auto;">
+		<div id="app">
+			<div class="min-h-screen bg-black text-gray-100">
+				<header class="fixed w-full bg-black py-4 md:py-3">
+					<div class="container mx-auto px-4 md:px-6">
+						<div class="flex items-center justify-between">
+							<div class="flex items-center">
+								<a class="text-xl md:text-2xl font-mono font-bold text-green-400 hover:text-green-300" href="/">Jovany Cardoza-Aguilar</a>
+							</div>
+							<nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+								<a class="font-mono text-sm lg:text-base text-green-400 px-2 py-1 rounded hover:bg-green-400 hover:text-black hover:ring-2 hover:ring-green-400 transition" href="/">Home</a>
+								<a class="font-mono text-sm lg:text-base text-green-400 px-2 py-1 rounded hover:bg-green-400 hover:text-black hover:ring-2 hover:ring-green-400 transition" href="blog.html">Blog</a>
+								<a class="font-mono text-sm lg:text-base text-green-400 px-2 py-1 rounded hover:bg-green-400 hover:text-black hover:ring-2 hover:ring-green-400 transition" href="projects.html">Projects</a>
+								<a class="font-mono text-sm lg:text-base text-green-400 px-2 py-1 rounded hover:bg-green-400 hover:text-black hover:ring-2 hover:ring-green-400 transition" href="publications.html">Publications</a>
+								<a class="font-mono text-sm lg:text-base text-green-400 px-2 py-1 rounded hover:bg-green-400 hover:text-black hover:ring-2 hover:ring-green-400 transition" href="resume.pdf" target="_blank">Resume</a>
+							</nav>
+							<div class="flex items-center space-x-4">
+								<a href="https://github.com/jovanycardozaaguilar" target="_blank" class="text-green-400 hover:text-green-300 text-xl">
+									<i class="fab fa-github"></i>
+								</a>
+								<a href="https://linkedin.com/in/jovany-cardoza-aguilar" target="_blank" class="text-green-400 hover:text-green-300 text-xl">
+									<i class="fab fa-linkedin"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</header>
+				<main class="pt-32 md:pt-24 container mx-auto px-4">
+					<h1 class="text-3xl font-mono font-bold mb-8">Blog</h1>
+					<div class="space-y-6">
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
+							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A brief description…</p>
+							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
+							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A brief description…</p>
+							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
+							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A brief description…</p>
+							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
+							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A brief description…</p>
+							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
+							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<article class="border border-green-500/30 p-4 rounded">
+							<h2 class="text-xl font-mono font-bold">
+								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
+							</h2>
+							<p class="text-gray-300 mt-2">A brief description…</p>
+							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						</article>
+						<!-- add more posts -->
+					</div>
+				</main>
+			</div>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
+
