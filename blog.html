@@ -14,17 +14,24 @@
 			nav a:hover {
 				color: black !important;
 			}
+			.article-card:hover {
+				background-color: #86efac; /* green-300 */
+				transition: background-color 200ms;
+			}
+			.article-card-ready {
+				transition: background-color 200ms;
+			}
 		</style>
 	</head>
-	<body style="overflow: auto;">
+	<body style="overflow: auto;" class="bg-[#FACFFF]">
 		<div id="app">
 			<div>
 				<header class="fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
 					<nav class="
-						grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
-						md:gap-x-1 px-0 lg:px-4 
-						relative
-						">
+						    grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
+						    md:gap-x-1 px-0 lg:px-4 
+						    relative
+						    ">
 						<!-- My Name -->
 						<a class="
 							  font-lexend 
@@ -37,8 +44,8 @@
 							  text-center sm:text-left 
 							  " href="/">
 							<span class="
-								inline-block hover:scale-110 transition-transform duration-200
-								">
+								     inline-block hover:scale-110 transition-transform duration-200
+								     ">
 								Jovany Cardoza-Aguilar
 							</span>
 						</a>
@@ -106,15 +113,15 @@
 						<!-- Outside Links -->
 						<div class="hidden sm:flex justify-self-end px-14 gap-x-6">
 							<a href="https://github.com/jovanycardozaaguilar" target="_blank" class="
-								text-3xl
-								hover:scale-125 transition-transform duration-200
-								">
+								 text-3xl
+								 hover:scale-125 transition-transform duration-200
+								 ">
 								<i class="fab fa-github"></i>
 							</a>
 							<a href="https://linkedin.com/in/jovany-cardoza-aguilar" target="_blank" class="
 								 text-3xl
 								 hover:scale-125 transition-transform duration-200
-								">
+								 ">
 								<i class="fab fa-linkedin"></i>
 							</a>
 						</div>
@@ -185,78 +192,22 @@
 					</nav>
 
 				</header>
-				<main class="pt-32 md:pt-24 bg-[#F3E8FF] container mx-auto px-4">
+				<main class="pt-32 md:pt-24 container mx-auto px-4">
 					<h1 class="text-3xl font-mono font-bold mb-8">Blog</h1>
 					<div class="space-y-6">
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
-							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						<article class="article-card border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="block p-4 text-black">
+								<h2 class="text-xl font-mono font-bold">My First Post</h2>
+								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
 						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A brief description…</p>
-							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
-							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A brief description…</p>
-							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
-							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A brief description…</p>
-							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
-							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A brief description…</p>
-							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-1.html" class="text-green-400 hover:text-green-300">My First Post</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A short excerpt about what this post covers…</p>
-							<a href="blog/post-1.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
-						</article>
-						<article class="border border-green-500/30 p-4 rounded">
-							<h2 class="text-xl font-mono font-bold">
-								<a href="blog/post-2.html" class="text-green-400 hover:text-green-300">Another Interesting Topic</a>
-							</h2>
-							<p class="text-gray-300 mt-2">A brief description…</p>
-							<a href="blog/post-2.html" class="text-green-400 hover:text-green-300 text-sm">Read more →</a>
+						<article class="article-card border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-2.html" class="block p-4 text-black">
+								<h2 class="text-xl font-mono font-bold">Another Interesting Topic</h2>
+								<p class="text-gray-700 mt-2">A brief description…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
 						</article>
 						<!-- add more posts -->
 					</div>
@@ -264,6 +215,13 @@
 			</div>
 		</div>
 		<script type="module" src="/src/main.js"></script>
+		<script>
+			window.addEventListener('load', () => {
+				document.querySelectorAll('.article-card').forEach(el => {
+					el.classList.add('article-card-ready');
+				});
+			});
+		</script>
 	</body>
 </html>
 
