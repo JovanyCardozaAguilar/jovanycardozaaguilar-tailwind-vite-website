@@ -14,6 +14,13 @@
 			nav a:hover {
 				color: black !important;
 			}
+			.article-card:hover {
+				background-color: #86efac; /* green-300 */
+				transition: background-color 200ms;
+			}
+			.article-card-ready {
+				transition: background-color 200ms;
+			}
 		</style>
 	</head>
 	<body style="overflow: auto;" class="bg-[#d698fa]">
@@ -29,7 +36,7 @@
 						<a class="
 							  font-lexend 
 							  sm:text-xs sm:px-1
-							  md:text-md md:px-1 
+							  md:text-md md:px-6 
 							  lg:px-2 lg:text-lg 
 							  xl:px-10 xl:text-2xl 
 							  font-bold uppercase 
@@ -186,14 +193,68 @@
 
 				</header>
 				<main class="pt-32 md:pt-24 text-black min-h-screen">
-					<div class="container mx-auto px-4 py-8">
-						<div class="max-w-4xl mx-auto">
-							<p>Home Test</p>
+					<div class="grid grid-cols-3 gap-2 px-10">
+						<div class="row-span-3 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]"><img src="img-self.jpg" alt="Jovany" class="w-full h-full object-cover"></div>
+						<div class="self-start p-3 px-4 bg-white col-span-2 border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							Hi! I'm Jovany, a Computer Science graduate from the 
+							<br><span class="text-indigo-800 font-semibold">University Of Washington, Tacoma</span>!
+							<br>I am interested in software engineering, electronics, and writings that you can find on my blog!
 						</div>
+						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="block text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
+								<h2 class="text-xl font-mono font-bold">My First Post</h2>
+								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
+						</div>
+						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="block text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
+								<h2 class="text-xl font-mono font-bold">My First Post</h2>
+								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
+						</div>
+						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="block text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
+								<h2 class="text-xl font-mono font-bold">My First Post</h2>
+								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
+						</div>
+						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="block text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
+								<h2 class="text-xl font-mono font-bold">My First Post</h2>
+								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
+						</div>
+						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="block text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
+								<h2 class="text-xl font-mono font-bold">My First Post</h2>
+								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-2 block">Read more →</span>
+							</a>
+						</div>
+						<div class="bg-white">4</div>
+						<div class="bg-white">5</div>
+						<div class="bg-white">6</div>
+						<div class="bg-white">7</div>
 					</div>
 				</main>
 			</div>
 		</div>
 		<script type="module" src="/src/main.js"></script>
+		<script>
+			window.addEventListener('load', () => {
+				document.querySelectorAll('.article-card').forEach(el => {
+					el.classList.add('article-card-ready');
+				});
+			});
+		</script>
 	</body>
 </html>
