@@ -15,11 +15,56 @@
 				color: black !important;
 			}
 			.article-card:hover {
-				background-color: #86efac; /* green-300 */
-				transition: background-color 200ms;
+				background-color: #86efac;
 			}
 			.article-card-ready {
 				transition: background-color 200ms;
+			}
+			@keyframes rainbow-wave {
+				0%   { background-position: 0% 50%; }
+				100% { background-position: 100% 50%; }
+			}
+			@keyframes spin-text {
+				0%   { transform: rotateY(0deg); }
+				100% { transform: rotateY(360deg); }
+			}
+			@property --angle {
+				syntax: '<angle>';
+				inherits: false;
+				initial-value: 0deg;
+			}
+			@keyframes rainbow-spin {
+				0%   { --angle: 0deg; }
+				100% { --angle: 360deg; }
+			}
+			.rainbow-wave {
+				color: black;
+			}
+			.fun-card {
+				transition: background-color 200ms;
+			}
+			.fun-card-ready {
+				transition: background-color 200ms;
+			}
+			.fun-card:hover {
+				background: conic-gradient(from var(--angle),
+					#ff6b6b, #ffa500, #ffff00, #6bff6b, #6b6bff, #ff6bff, #ff6b6b
+						);
+				animation: rainbow-spin 3s linear infinite;
+			}
+			.fun-card:hover .rainbow-wave {
+				background: linear-gradient(to right, 
+					#ff6b6b, #ffa500, #ffff00, #6bff6b, #6b6bff, #ff6bff,
+					#ff6b6b, #ffa500, #ffff00, #6bff6b, #6b6bff, #ff6bff,
+					#ff6b6b
+						);
+				background-size: 400% 100%;
+				animation: rainbow-wave 8s linear infinite, spin-text 1s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				color: transparent;
+				filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black);
 			}
 		</style>
 	</head>
@@ -28,10 +73,10 @@
 			<div>
 				<header class="fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
 					<nav class="
-						grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
-						md:gap-x-1 px-0 lg:px-4 
-						relative
-						">
+						    grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
+						    md:gap-x-1 px-0 lg:px-4 
+						    relative
+						    ">
 						<!-- My Name -->
 						<a class="
 							  font-lexend 
@@ -44,8 +89,8 @@
 							  text-center sm:text-left 
 							  " href="/">
 							<span class="
-								inline-block hover:scale-110 transition-transform duration-200
-								">
+								     inline-block hover:scale-110 transition-transform duration-200
+								     ">
 								Jovany Cardoza-Aguilar
 							</span>
 						</a>
@@ -113,15 +158,15 @@
 						<!-- Outside Links -->
 						<div class="hidden sm:flex justify-self-end px-14 gap-x-6">
 							<a href="https://github.com/jovanycardozaaguilar" target="_blank" class="
-								text-3xl
-								hover:scale-125 transition-transform duration-200
-								">
+								 text-3xl
+								 hover:scale-125 transition-transform duration-200
+								 ">
 								<i class="fab fa-github"></i>
 							</a>
 							<a href="https://linkedin.com/in/jovany-cardoza-aguilar" target="_blank" class="
 								 text-3xl
 								 hover:scale-125 transition-transform duration-200
-								">
+								 ">
 								<i class="fab fa-linkedin"></i>
 							</a>
 						</div>
@@ -195,55 +240,39 @@
 				<main class="pt-32 md:pt-24 text-black min-h-screen">
 					<div class="grid grid-cols-3 gap-2 px-10">
 						<div class="row-span-3 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]"><img src="img-self.jpg" alt="Jovany" class="w-full h-full object-cover"></div>
-						<div class="self-start p-3 px-4 bg-white col-span-2 border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+						<div class="p-3 px-4 bg-white col-span-2 border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
 							Hi! I'm Jovany, a Computer Science graduate from the 
 							<br><span class="text-indigo-800 font-semibold">University Of Washington, Tacoma</span>!
 							<br>I am interested in software engineering, electronics, and writings that you can find on my blog!
 						</div>
-						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="blog/post-1.html" class="block text-black">
-								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
+						<div class="article-card p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="blog/post-1.html" class="flex flex-col h-full text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h1>
 								<h2 class="text-xl font-mono font-bold">My First Post</h2>
-								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
-								<span class="text-sm mt-2 block">Read more →</span>
+								<p class="text-gray-700">A short excerpt about what this post covers…</p>
+								<p class="text-s mt-auto">Read more →</p>
 							</a>
 						</div>
-						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="blog/post-1.html" class="block text-black">
-								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
-								<h2 class="text-xl font-mono font-bold">My First Post</h2>
-								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
-								<span class="text-sm mt-2 block">Read more →</span>
+						<div class="article-card p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="project/rss-style-youtube-feed-aggregator.html" class="flex flex-col h-full text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Project</h2>
+								<h2 class="text-xl font-mono font-bold">RSS-Style YouTube Feed Aggregator</h2>
+								<p class="text-gray-700">A short excerpt about what this post covers…</p>
+								<span class="text-sm mt-auto">Read more →</span>
 							</a>
 						</div>
-						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="blog/post-1.html" class="block text-black">
-								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
-								<h2 class="text-xl font-mono font-bold">My First Post</h2>
-								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
-								<span class="text-sm mt-2 block">Read more →</span>
+						<div class="article-card p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="paper/holistic-random-walk.html" class="flex flex-col h-full text-black">
+								<h1 class="text-sm font-mono font-bold underline">My Newest Paper</h2>
+								<h2 class="text-xl font-mono font-bold">A Holistic Approach for Single-Cell Data Trajectory Inference Using Chromosome Physical Location and Ensemble Random Walk</h2>
+								<span class="text-sm mt-auto">Read more →</span>
 							</a>
 						</div>
-						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="blog/post-1.html" class="block text-black">
-								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
-								<h2 class="text-xl font-mono font-bold">My First Post</h2>
-								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
-								<span class="text-sm mt-2 block">Read more →</span>
+						<div class="fun-card p-3 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000] min-h">
+							<a href="fun/index.html" class="flex h-full justify-center items-center">
+								<h1 class="rainbow-wave text-5xl font-mono font-bold">Fun Corner</h1>
 							</a>
 						</div>
-						<div class="article-card self-start p-1 px-4 bg-white border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="blog/post-1.html" class="block text-black">
-								<h1 class="text-sm font-mono font-bold underline">My Newest Blog Post</h2>
-								<h2 class="text-xl font-mono font-bold">My First Post</h2>
-								<p class="text-gray-700 mt-2">A short excerpt about what this post covers…</p>
-								<span class="text-sm mt-2 block">Read more →</span>
-							</a>
-						</div>
-						<div class="bg-white">4</div>
-						<div class="bg-white">5</div>
-						<div class="bg-white">6</div>
-						<div class="bg-white">7</div>
 					</div>
 				</main>
 			</div>
@@ -253,6 +282,11 @@
 			window.addEventListener('load', () => {
 				document.querySelectorAll('.article-card').forEach(el => {
 					el.classList.add('article-card-ready');
+				});
+			});
+			window.addEventListener('load', () => {
+				document.querySelectorAll('.fun-card').forEach(el => {
+					el.classList.add('fun-card-ready');
 				});
 			});
 		</script>
