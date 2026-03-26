@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<title>jovanycardozaaguilar-tailwind-vite-website</title>
+		<style>
+			nav a {
+				color: #000000;
+				text-decoration: none;
+			}
+			nav a:hover {
+				color: black !important;
+			}
+			.article-card:hover {
+				background-color: #86efac; /* green-300 */
+				transition: background-color 200ms;
+			}
+			.article-card-ready {
+				transition: background-color 200ms;
+			}
+		</style>
+	</head>
+	<body style="overflow: auto;" class="bg-[#d698fa]">
+		<div id="app">
+			<div>
+				<header class="fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
+					<nav class="
+						    grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
+						    md:gap-x-1 px-0 lg:px-4 
+						    relative
+						    ">
+						<div></div>
+						<!-- Page Links -->
+						<div class="hidden sm:flex gap-x-2 lg:gap-x-3">
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="/">Home</a>
+							</div>
+						</div>
+					</nav>
+
+					<!-- Mobile Nav Bar -->
+					<nav class="sm:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+						<div class="bg-[#fcc019] flex justify-around bg-neo-yellow border-4 border-black shadow-[8px_8px_0_#000] max-w-sm mx-auto px-2 py-2">
+							<!-- Home -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs 
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="/">Home</a>
+							</div>
+						</div>
+					</nav>
+				</header>
+				<main class="pt-32 md:pt-24 container mx-auto px-4">
+					<div class="space-y-6">
+						<h1 class="text-3xl font-mono font-bold mb-8">German Stuff</h1>
+						<article class="article-card border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
+							<a href="/german/Assimil German With Ease.pdf" target="_blank" class="block p-4 text-black">
+								<h2 class="text-xl font-mono font-bold">German Assimil</h2>
+								<p class="text-gray-700 mt-2">Assimil</p>
+								<span class="text-sm mt-2 block">Check It Out! →</span>
+							</a>
+						</article>
+						<h2 class="text-xl font-mono font-bold">Lesson 1</h2>
+						<audio controls>
+							<source src="/german/German1-1.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 2</h2>
+						<audio controls>
+							<source src="/german/German1-2.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 3</h2>
+						<audio controls>
+							<source src="/german/German1-3.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 4</h2>
+						<audio controls>
+							<source src="/german/German1-4.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 5</h2>
+						<audio controls>
+							<source src="/german/German1-5.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 6</h2>
+						<audio controls>
+							<source src="/german/German1-6.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 7</h2>
+						<audio controls>
+							<source src="/german/German1-7.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 8</h2>
+						<audio controls>
+							<source src="/german/German1-8.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 9</h2>
+						<audio controls>
+							<source src="/german/German1-9.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 10</h2>
+						<audio controls>
+							<source src="/german/German1-10.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 11</h2>
+						<audio controls>
+							<source src="/german/German1-11.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 12</h2>
+						<audio controls>
+							<source src="/german/German1-12.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 13</h2>
+						<audio controls>
+							<source src="/german/German1-13.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 14</h2>
+						<audio controls>
+							<source src="/german/German1-14.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 15</h2>
+						<audio controls>
+							<source src="/german/German1-15.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 16</h2>
+						<audio controls>
+							<source src="/german/German1-16.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 17</h2>
+						<audio controls>
+							<source src="/german/German1-17.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 18</h2>
+						<audio controls>
+							<source src="/german/German1-18.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 19</h2>
+						<audio controls>
+							<source src="/german/German1-19.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 20</h2>
+						<audio controls>
+							<source src="/german/German1-20.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 21</h2>
+						<audio controls>
+							<source src="/german/German1-21.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 22</h2>
+						<audio controls>
+							<source src="/german/German1-22.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 23-26 missing</h2>
+						<h2 class="text-xl font-mono font-bold">Lesson 27</h2>
+						<audio controls>
+							<source src="/german/German2-1.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 28</h2>
+						<audio controls>
+							<source src="/german/German2-2.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 29</h2>
+						<audio controls>
+							<source src="/german/German2-3.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 30</h2>
+						<audio controls>
+							<source src="/german/German2-4.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 31</h2>
+						<audio controls>
+							<source src="/german/German2-5.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 32</h2>
+						<audio controls>
+							<source src="/german/German2-6.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 33</h2>
+						<audio controls>
+							<source src="/german/German2-7.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 34</h2>
+						<audio controls>
+							<source src="/german/German2-8.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 35</h2>
+						<audio controls>
+							<source src="/german/German2-9.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 36</h2>
+						<audio controls>
+							<source src="/german/German2-10.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 37</h2>
+						<audio controls>
+							<source src="/german/German2-11.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 38</h2>
+						<audio controls>
+							<source src="/german/German2-12.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 39</h2>
+						<audio controls>
+							<source src="/german/German2-13.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 40</h2>
+						<audio controls>
+							<source src="/german/German2-14.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 41</h2>
+						<audio controls>
+							<source src="/german/German2-15.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 42</h2>
+						<audio controls>
+							<source src="/german/German2-16.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 43</h2>
+						<audio controls>
+							<source src="/german/German2-17.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 44</h2>
+						<audio controls>
+							<source src="/german/German2-18.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 45</h2>
+						<audio controls>
+							<source src="/german/German2-19.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 46</h2>
+						<audio controls>
+							<source src="/german/German2-20.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 47</h2>
+						<audio controls>
+							<source src="/german/German2-21.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 48</h2>
+						<audio controls>
+							<source src="/german/German2-22.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 49</h2>
+						<audio controls>
+							<source src="/german/German2-23.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 50</h2>
+						<audio controls>
+							<source src="/german/German2-24.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 51</h2>
+						<audio controls>
+							<source src="/german/German2-25.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 52</h2>
+						<audio controls>
+							<source src="/german/German2-26.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 53</h2>
+						<audio controls>
+							<source src="/german/German3-1.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 54</h2>
+						<audio controls>
+							<source src="/german/German3-2.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 55</h2>
+						<audio controls>
+							<source src="/german/German3-3.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 56</h2>
+						<audio controls>
+							<source src="/german/German3-4.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 57</h2>
+						<audio controls>
+							<source src="/german/German3-5.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 58</h2>
+						<audio controls>
+							<source src="/german/German3-6.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 59</h2>
+						<audio controls>
+							<source src="/german/German3-7.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 60</h2>
+						<audio controls>
+							<source src="/german/German3-8.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 61</h2>
+						<audio controls>
+							<source src="/german/German3-9.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 62</h2>
+						<audio controls>
+							<source src="/german/German3-10.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 63</h2>
+						<audio controls>
+							<source src="/german/German3-11.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 64</h2>
+						<audio controls>
+							<source src="/german/German3-12.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 65</h2>
+						<audio controls>
+							<source src="/german/German3-13.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 66</h2>
+						<audio controls>
+							<source src="/german/German3-14.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 67</h2>
+						<audio controls>
+							<source src="/german/German3-15.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 68</h2>
+						<audio controls>
+							<source src="/german/German3-16.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 69</h2>
+						<audio controls>
+							<source src="/german/German3-17.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 70</h2>
+						<audio controls>
+							<source src="/german/German3-18.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 71</h2>
+						<audio controls>
+							<source src="/german/German3-19.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 72</h2>
+						<audio controls>
+							<source src="/german/German3-20.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 73</h2>
+						<audio controls>
+							<source src="/german/German3-21.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 74</h2>
+						<audio controls>
+							<source src="/german/German3-22.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 75</h2>
+						<audio controls>
+							<source src="/german/German3-23.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 76</h2>
+						<audio controls>
+							<source src="/german/German3-24.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 77</h2>
+						<audio controls>
+							<source src="/german/German4-1.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 78</h2>
+						<audio controls>
+							<source src="/german/German4-2.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 79</h2>
+						<audio controls>
+							<source src="/german/German4-3.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 80</h2>
+						<audio controls>
+							<source src="/german/German4-4.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 81</h2>
+						<audio controls>
+							<source src="/german/German4-5.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 82</h2>
+						<audio controls>
+							<source src="/german/German4-6.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 83</h2>
+						<audio controls>
+							<source src="/german/German4-7.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 84</h2>
+						<audio controls>
+							<source src="/german/German4-8.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 85</h2>
+						<audio controls>
+							<source src="/german/German4-9.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 86</h2>
+						<audio controls>
+							<source src="/german/German4-10.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 87</h2>
+						<audio controls>
+							<source src="/german/German4-11.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 88</h2>
+						<audio controls>
+							<source src="/german/German4-12.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 89</h2>
+						<audio controls>
+							<source src="/german/German4-13.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 90</h2>
+						<audio controls>
+							<source src="/german/German4-14.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 91</h2>
+						<audio controls>
+							<source src="/german/German4-15.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 92</h2>
+						<audio controls>
+							<source src="/german/German4-16.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 93</h2>
+						<audio controls>
+							<source src="/german/German4-17.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 94</h2>
+						<audio controls>
+							<source src="/german/German4-18.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 95</h2>
+						<audio controls>
+							<source src="/german/German4-19.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 96</h2>
+						<audio controls>
+							<source src="/german/German4-20.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 97</h2>
+						<audio controls>
+							<source src="/german/German4-21.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 98</h2>
+						<audio controls>
+							<source src="/german/German4-22.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 99</h2>
+						<audio controls>
+							<source src="/german/German4-23.mp3" type="audio/mpeg">
+						</audio>
+						<h2 class="text-xl font-mono font-bold">Lesson 100</h2>
+						<audio controls>
+							<source src="/german/German4-24.mp3" type="audio/mpeg">
+						</audio>
+						<!-- add more posts -->
+					</div>
+				</main>
+			</div>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+		<script>
+			window.addEventListener('load', () => {
+				document.querySelectorAll('.article-card').forEach(el => {
+					el.classList.add('article-card-ready');
+				});
+			});
+		</script>
+	</body>
+</html>
+
