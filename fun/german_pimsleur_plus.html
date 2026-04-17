@@ -21,6 +21,131 @@
 			.article-card-ready {
 				transition: background-color 200ms;
 			}
+
+			* { box-sizing: border-box; }
+
+			.lesson-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.lesson-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.lesson-header {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.lesson-number {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #fcc019;
+				border: 2px solid black;
+				padding: 3px 12px;
+				white-space: nowrap;
+				font-family: 'Courier New', monospace;
+			}
+			.lesson-title {
+				font-size: 15px;
+				font-weight: 700;
+				color: black;
+				letter-spacing: 0.02em;
+				font-family: 'Courier New', monospace;
+			}
+			.player {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: white;
+				border: 2px solid black;
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.play-btn-wrap {
+				position: relative;
+				display: inline-block;
+				flex-shrink: 0;
+			}
+			.play-btn-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: black;
+				transform: translate(3px, 3px);
+				border-radius: 6px;
+				z-index: -1;
+			}
+			.play-toggle {
+				position: relative;
+				width: 36px;
+				height: 36px;
+				background: #86efac;
+				border: 2px solid black;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 13px;
+				color: black;
+				transition: transform 0.1s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.play-toggle:hover { transform: translate(-1px, -1px); }
+			.play-toggle:active { transform: translate(2px, 2px); }
+			.play-toggle.playing { background: #fcc019; }
+			.progress-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.progress-track {
+				width: 100%;
+				height: 8px;
+				background: #e5e5e5;
+				border: 1.5px solid black;
+				border-radius: 4px;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			.progress-fill {
+				height: 100%;
+				background: #fcc019;
+				border-radius: 4px;
+				width: 0%;
+				pointer-events: none;
+			}
+			.time-row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 10px;
+				font-weight: 700;
+				color: #666;
+				letter-spacing: 0.05em;
+				font-family: 'Courier New', monospace;
+			}
+			.volume-btn {
+				flex-shrink: 0;
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 14px;
+				color: #444;
+				padding: 4px;
+				transition: color 0.1s;
+			}
+			.volume-btn:hover { color: black; }
 		</style>
 	</head>
 	<body style="overflow: auto;" class="bg-[#d698fa]">
@@ -75,47 +200,8 @@
 				</header>
 				<main class="pt-32 md:pt-24 container mx-auto px-4">
 					<div class="space-y-6">
-						<h1 class="text-3xl font-mono font-bold mb-8">German Stuff</h1>
-						<h2 class="text-xl font-mono font-bold">Lesson 1</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 01.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 2</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 02.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 3</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 03.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 4</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 04.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 5</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 05.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 6</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 06.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 7</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 07.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 8</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 08.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 9</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 09.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 10</h2>
-						<audio controls>
-							<source src="/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 10.mp3" type="audio/mpeg">
-						</audio>
+						<h1 class="text-3xl font-mono font-bold mb-8">German Pimsleur Plus</h1>
+						<div id="lessons"></div>
 					</div>
 				</main>
 			</div>
@@ -127,7 +213,110 @@
 					el.classList.add('article-card-ready');
 				});
 			});
+
+			const container = document.getElementById('lessons');
+			let activeAudio = null, activeBtn = null, activeFill = null, activeTimeEl = null, rafId = null;
+
+			function fmt(s) {
+				if (isNaN(s) || !isFinite(s)) return '0:00';
+				const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+				return `${m}:${sec.toString().padStart(2, '0')}`;
+			}
+
+			function stopAll() {
+				if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; }
+				if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+				if (activeFill) activeFill.style.width = '0%';
+				if (activeTimeEl) activeTimeEl.textContent = '0:00';
+				cancelAnimationFrame(rafId);
+				activeAudio = activeBtn = activeFill = activeTimeEl = null;
+			}
+
+			function tick(audio, fill, timeEl) {
+				if (!audio.paused) {
+					fill.style.width = (audio.duration ? (audio.currentTime / audio.duration) * 100 : 0) + '%';
+					timeEl.textContent = fmt(audio.currentTime);
+					rafId = requestAnimationFrame(() => tick(audio, fill, timeEl));
+				}
+			}
+
+			function addLessonCard(label, title, src) {
+				const card = document.createElement('div');
+				card.className = 'lesson-card';
+				card.innerHTML = `
+					<div class="lesson-header">
+						<span class="lesson-number">${label}</span>
+						<span class="lesson-title">${title}</span>
+					</div>
+					<div class="player">
+						<div class="play-btn-wrap">
+							<button class="play-toggle" aria-label="Play ${title}"><i class="fas fa-play"></i></button>
+						</div>
+						<div class="progress-area">
+							<div class="progress-track"><div class="progress-fill"></div></div>
+							<div class="time-row"><span class="current-time">0:00</span><span class="duration">--:--</span></div>
+						</div>
+						<button class="volume-btn" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+					</div>`;
+
+				const btn = card.querySelector('.play-toggle');
+				const fill = card.querySelector('.progress-fill');
+				const track = card.querySelector('.progress-track');
+				const curEl = card.querySelector('.current-time');
+				const durEl = card.querySelector('.duration');
+				const volBtn = card.querySelector('.volume-btn');
+				let audio = null, muted = false;
+
+				function getAudio() {
+					if (audio) return audio;
+					audio = new Audio(src);
+					audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+					audio.addEventListener('ended', () => {
+						btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>';
+						fill.style.width = '0%'; curEl.textContent = '0:00'; cancelAnimationFrame(rafId);
+					});
+					return audio;
+				}
+
+				btn.addEventListener('click', () => {
+					const a = getAudio();
+					if (!a.paused) {
+						a.pause(); btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>'; cancelAnimationFrame(rafId);
+					} else {
+						if (activeAudio && activeAudio !== a) stopAll();
+						a.play(); btn.classList.add('playing'); btn.innerHTML = '<i class="fas fa-pause"></i>';
+						activeAudio = a; activeBtn = btn; activeFill = fill; activeTimeEl = curEl;
+						rafId = requestAnimationFrame(() => tick(a, fill, curEl));
+					}
+				});
+
+				track.addEventListener('click', (e) => {
+					const a = getAudio();
+					if (!a.duration) return;
+					const rect = track.getBoundingClientRect();
+					a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration;
+					fill.style.width = (a.currentTime / a.duration * 100) + '%';
+					curEl.textContent = fmt(a.currentTime);
+				});
+
+				volBtn.addEventListener('click', () => {
+					const a = getAudio(); muted = !muted; a.muted = muted;
+					volBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+				});
+
+				container.appendChild(card);
+			}
+
+			addLessonCard('01', 'Lesson 1',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 01.mp3');
+			addLessonCard('02', 'Lesson 2',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 02.mp3');
+			addLessonCard('03', 'Lesson 3',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 03.mp3');
+			addLessonCard('04', 'Lesson 4',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 04.mp3');
+			addLessonCard('05', 'Lesson 5',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 05.mp3');
+			addLessonCard('06', 'Lesson 6',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 06.mp3');
+			addLessonCard('07', 'Lesson 7',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 07.mp3');
+			addLessonCard('08', 'Lesson 8',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 08.mp3');
+			addLessonCard('09', 'Lesson 9',  '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 09.mp3');
+			addLessonCard('10', 'Lesson 10', '/german/pimsleur/pimsleurPlus/Pimsleur - German [Plus] - 10.mp3');
 		</script>
 	</body>
 </html>
-
