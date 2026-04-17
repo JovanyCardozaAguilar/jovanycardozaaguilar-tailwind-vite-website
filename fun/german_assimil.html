@@ -15,18 +15,232 @@
 				color: black !important;
 			}
 			.article-card:hover {
-				background-color: #86efac; /* green-300 */
+				background-color: #86efac;
 				transition: background-color 200ms;
 			}
 			.article-card-ready {
 				transition: background-color 200ms;
+			}
+
+			* { box-sizing: border-box; }
+
+			.lesson-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.lesson-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.lesson-header {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.lesson-number {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #fcc019;
+				border: 2px solid black;
+				padding: 3px 12px;
+				white-space: nowrap;
+				font-family: 'Courier New', monospace;
+			}
+			.lesson-title {
+				font-size: 15px;
+				font-weight: 700;
+				color: black;
+				letter-spacing: 0.02em;
+				font-family: 'Courier New', monospace;
+			}
+			.player {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: white;
+				border: 2px solid black;
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.play-btn-wrap {
+				position: relative;
+				display: inline-block;
+				flex-shrink: 0;
+			}
+			.play-btn-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: black;
+				transform: translate(3px, 3px);
+				border-radius: 6px;
+				z-index: -1;
+			}
+			.play-toggle {
+				position: relative;
+				width: 36px;
+				height: 36px;
+				background: #86efac;
+				border: 2px solid black;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 13px;
+				color: black;
+				transition: transform 0.1s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.play-toggle:hover { transform: translate(-1px, -1px); }
+			.play-toggle:active { transform: translate(2px, 2px); }
+			.play-toggle.playing { background: #fcc019; }
+			.progress-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.progress-track {
+				width: 100%;
+				height: 8px;
+				background: #e5e5e5;
+				border: 1.5px solid black;
+				border-radius: 4px;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			.progress-fill {
+				height: 100%;
+				background: #fcc019;
+				border-radius: 4px;
+				width: 0%;
+				pointer-events: none;
+			}
+			.time-row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 10px;
+				font-weight: 700;
+				color: #666;
+				letter-spacing: 0.05em;
+				font-family: 'Courier New', monospace;
+			}
+			.volume-btn {
+				flex-shrink: 0;
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 14px;
+				color: #444;
+				padding: 4px;
+				transition: color 0.1s;
+			}
+			.volume-btn:hover { color: black; }
+			.pdf-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.pdf-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.pdf-card a {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				padding: 20px 24px;
+				text-decoration: none;
+				color: black;
+			}
+			.pdf-icon { font-size: 22px; color: black; flex-shrink: 0; }
+			.pdf-title { font-size: 15px; font-weight: 700; font-family: 'Courier New', monospace; }
+			.pdf-cta { font-size: 12px; color: #555; margin-top: 3px; font-family: 'Courier New', monospace; }
+			.strategy-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+			}
+			.strategy-title {
+				font-size: 15px;
+				font-weight: 700;
+				font-family: 'Courier New', monospace;
+				margin-bottom: 14px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.strategy-badge {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #86efac;
+				border: 2px solid black;
+				padding: 3px 12px;
+				font-family: 'Courier New', monospace;
+			}
+			.strategy-steps {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.strategy-steps li {
+				display: flex;
+				gap: 12px;
+				align-items: baseline;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				color: #222;
+				line-height: 1.5;
+			}
+			.step-num {
+				font-size: 10px;
+				font-weight: 700;
+				background: black;
+				color: white;
+				padding: 2px 7px;
+				flex-shrink: 0;
+				font-family: 'Courier New', monospace;
+			}
+			.missing-card {
+				background: #f0f0f0;
+				border: 3px dashed #999;
+				border-radius: 12px;
+				padding: 14px 24px;
+				margin-bottom: 24px;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				color: #666;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
 			}
 		</style>
 	</head>
 	<body style="overflow: auto;" class="bg-[#d698fa]">
 		<div id="app">
 			<div>
-				<header class="fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
+				<header class="z-232 fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
 					<nav class="
 						    grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
 						    md:gap-x-1 px-0 lg:px-4 
@@ -47,7 +261,7 @@
 									  transition-transform duration-200 
 									  hover:-translate-y-0.5 hover:-translate-x-0.5 
 									  active:translate-y-1 active:translate-x-1
-									  " href="/">Home</a>
+									  " href="../fun/german.html">Back</a>
 							</div>
 						</div>
 					</nav>
@@ -68,428 +282,15 @@
 									  transition-transform duration-200 
 									  hover:-translate-y-0.5 hover:-translate-x-0.5 
 									  active:translate-y-1 active:translate-x-1
-									  " href="/">Home</a>
+									  " href="../fun/german.html">Back</a>
 							</div>
 						</div>
 					</nav>
 				</header>
 				<main class="pt-32 md:pt-24 container mx-auto px-4">
 					<div class="space-y-6">
-						<h1 class="text-3xl font-mono font-bold mb-8">German Stuff</h1>
-						<article class="article-card border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="/german/assimil/Assimil German With Ease compressed.pdf" target="_blank" class="block p-4 text-black">
-								<h2 class="text-xl font-mono font-bold">German Assimil Book</h2>
-								<span class="text-sm mt-2 block">Check It Out! →</span>
-							</a>
-						</article>
-						<article class="block p-4 border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-								<h2 class="text-xl font-mono font-bold">Assimil Strategy</h2>
-								<h3 class="text-lg font-mono">
-									1. Blind Shadow Audio X 2
-									<br>
-									2. Shadow Audio, while looking at Native Language X 2
-									<br>
-									3. Shadow Audio, while looking at Target Language X 3
-									<br>
-									4. Read Target Language text
-									<br>
-									5. Recall Target Language, while looking at Native Language w/o fail X 2
-									<br>
-									6. Blind Listen 
-									<br>
-									7. Go through notes
-									<br>
-									8. Go through exercises
-									<br>
-									9. Blind Listen
-								</h3>
-						</article>
-						<h2 class="text-xl font-mono font-bold">Lesson 1</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-1.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 2</h2>
-						<audio controls>
-							<source src="/german/German1-2.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 3</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-3.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 4</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-4.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 5</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-5.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 6</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-6.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 7</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-7.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 8</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-8.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 9</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-9.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 10</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-10.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 11</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-11.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 12</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-12.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 13</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-13.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 14</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-14.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 15</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-15.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 16</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-16.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 17</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-17.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 18</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-18.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 19</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-19.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 20</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-20.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 21</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-21.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 22</h2>
-						<audio controls>
-							<source src="/german/assimil/German1-22.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 23-26 missing</h2>
-						<h2 class="text-xl font-mono font-bold">Lesson 27</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-1.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 28</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-2.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 29</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-3.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 30</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-4.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 31</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-5.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 32</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-6.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 33</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-7.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 34</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-8.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 35</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-9.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 36</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-10.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 37</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-11.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 38</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-12.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 39</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-13.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 40</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-14.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 41</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-15.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 42</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-16.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 43</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-17.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 44</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-18.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 45</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-19.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 46</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-20.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 47</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-21.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 48</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-22.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 49</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-23.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 50</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-24.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 51</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-25.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 52</h2>
-						<audio controls>
-							<source src="/german/assimil/German2-26.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 53</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-1.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 54</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-2.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 55</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-3.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 56</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-4.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 57</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-5.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 58</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-6.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 59</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-7.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 60</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-8.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 61</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-9.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 62</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-10.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 63</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-11.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 64</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-12.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 65</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-13.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 66</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-14.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 67</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-15.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 68</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-16.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 69</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-17.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 70</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-18.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 71</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-19.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 72</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-20.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 73</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-21.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 74</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-22.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 75</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-23.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 76</h2>
-						<audio controls>
-							<source src="/german/assimil/German3-24.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 77</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-1.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 78</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-2.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 79</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-3.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 80</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-4.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 81</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-5.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 82</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-6.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 83</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-7.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 84</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-8.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 85</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-9.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 86</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-10.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 87</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-11.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 88</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-12.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 89</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-13.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 90</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-14.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 91</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-15.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 92</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-16.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 93</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-17.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 94</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-18.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 95</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-19.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 96</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-20.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 97</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-21.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 98</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-22.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 99</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-23.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 100</h2>
-						<audio controls>
-							<source src="/german/assimil/German4-24.mp3" type="audio/mpeg">
-						</audio>
-						<!-- add more posts -->
+						<h1 class="text-3xl font-mono font-bold mb-8">German Assimil</h1>
+						<div id="lessons"></div>
 					</div>
 				</main>
 			</div>
@@ -501,7 +302,233 @@
 					el.classList.add('article-card-ready');
 				});
 			});
+
+			const container = document.getElementById('lessons');
+			let activeAudio = null, activeBtn = null, activeFill = null, activeTimeEl = null, rafId = null;
+
+			function fmt(s) {
+				if (isNaN(s) || !isFinite(s)) return '0:00';
+				const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+				return `${m}:${sec.toString().padStart(2, '0')}`;
+			}
+
+			function stopAll() {
+				if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; }
+				if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+				if (activeFill) activeFill.style.width = '0%';
+				if (activeTimeEl) activeTimeEl.textContent = '0:00';
+				cancelAnimationFrame(rafId);
+				activeAudio = activeBtn = activeFill = activeTimeEl = null;
+			}
+
+			function tick(audio, fill, timeEl) {
+				if (!audio.paused) {
+					fill.style.width = (audio.duration ? (audio.currentTime / audio.duration) * 100 : 0) + '%';
+					timeEl.textContent = fmt(audio.currentTime);
+					rafId = requestAnimationFrame(() => tick(audio, fill, timeEl));
+				}
+			}
+
+			function addPdfCard(href, title) {
+				const card = document.createElement('div');
+				card.className = 'pdf-card';
+				card.innerHTML = `<a href="${href}" target="_blank"><span class="pdf-icon"><i class="fas fa-file-pdf"></i></span><div><div class="pdf-title">${title}</div><div class="pdf-cta">Open PDF →</div></div></a>`;
+				container.appendChild(card);
+			}
+
+			function addStrategyCard() {
+				const card = document.createElement('div');
+				card.className = 'strategy-card';
+				card.innerHTML = `
+					<div class="strategy-title"><span class="strategy-badge">Strategy</span> Assimil Method</div>
+					<ol class="strategy-steps">
+						<li><span class="step-num">1</span> Blind shadow audio ×2</li>
+						<li><span class="step-num">2</span> Shadow audio while looking at native language ×2</li>
+						<li><span class="step-num">3</span> Shadow audio while looking at target language ×3</li>
+						<li><span class="step-num">4</span> Read target language text</li>
+						<li><span class="step-num">5</span> Recall target language while looking at native language, without fail ×2</li>
+						<li><span class="step-num">6</span> Blind listen</li>
+						<li><span class="step-num">7</span> Go through notes</li>
+						<li><span class="step-num">8</span> Go through exercises</li>
+						<li><span class="step-num">9</span> Blind listen</li>
+					</ol>`;
+				container.appendChild(card);
+			}
+
+			function addMissingCard(text) {
+				const card = document.createElement('div');
+				card.className = 'missing-card';
+				card.textContent = text;
+				container.appendChild(card);
+			}
+
+			function addLessonCard(label, title, src) {
+				const card = document.createElement('div');
+				card.className = 'lesson-card';
+				card.innerHTML = `
+					<div class="lesson-header">
+						<span class="lesson-number">${label}</span>
+						<span class="lesson-title">${title}</span>
+					</div>
+					<div class="player">
+						<div class="play-btn-wrap">
+							<button class="play-toggle" aria-label="Play ${title}"><i class="fas fa-play"></i></button>
+						</div>
+						<div class="progress-area">
+							<div class="progress-track"><div class="progress-fill"></div></div>
+							<div class="time-row"><span class="current-time">0:00</span><span class="duration">--:--</span></div>
+						</div>
+						<button class="volume-btn" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+					</div>`;
+
+				const btn = card.querySelector('.play-toggle');
+				const fill = card.querySelector('.progress-fill');
+				const track = card.querySelector('.progress-track');
+				const curEl = card.querySelector('.current-time');
+				const durEl = card.querySelector('.duration');
+				const volBtn = card.querySelector('.volume-btn');
+				let audio = null, muted = false;
+
+				function getAudio() {
+					if (audio) return audio;
+					audio = new Audio(src);
+					audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+					audio.addEventListener('ended', () => {
+						btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>';
+						fill.style.width = '0%'; curEl.textContent = '0:00'; cancelAnimationFrame(rafId);
+					});
+					return audio;
+				}
+
+				btn.addEventListener('click', () => {
+					const a = getAudio();
+					if (!a.paused) {
+						a.pause(); btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>'; cancelAnimationFrame(rafId);
+					} else {
+						if (activeAudio && activeAudio !== a) stopAll();
+						a.play(); btn.classList.add('playing'); btn.innerHTML = '<i class="fas fa-pause"></i>';
+						activeAudio = a; activeBtn = btn; activeFill = fill; activeTimeEl = curEl;
+						rafId = requestAnimationFrame(() => tick(a, fill, curEl));
+					}
+				});
+
+				track.addEventListener('click', (e) => {
+					const a = getAudio();
+					if (!a.duration) return;
+					const rect = track.getBoundingClientRect();
+					a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration;
+					fill.style.width = (a.currentTime / a.duration * 100) + '%';
+					curEl.textContent = fmt(a.currentTime);
+				});
+
+				volBtn.addEventListener('click', () => {
+					const a = getAudio(); muted = !muted; a.muted = muted;
+					volBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+				});
+
+				container.appendChild(card);
+			}
+
+			// ── Build page ────────────────────────────────────────────────────────────
+			addPdfCard('/german/assimil/Assimil German With Ease compressed.pdf', 'German Assimil Book');
+			addStrategyCard();
+			addLessonCard('01', 'Lesson 1',  '/german/assimil/German1-1.mp3');
+			addLessonCard('02', 'Lesson 2',  '/german/German1-2.mp3');
+			addLessonCard('03', 'Lesson 3',  '/german/assimil/German1-3.mp3');
+			addLessonCard('04', 'Lesson 4',  '/german/assimil/German1-4.mp3');
+			addLessonCard('05', 'Lesson 5',  '/german/assimil/German1-5.mp3');
+			addLessonCard('06', 'Lesson 6',  '/german/assimil/German1-6.mp3');
+			addLessonCard('07', 'Lesson 7',  '/german/assimil/German1-7.mp3');
+			addLessonCard('08', 'Lesson 8',  '/german/assimil/German1-8.mp3');
+			addLessonCard('09', 'Lesson 9',  '/german/assimil/German1-9.mp3');
+			addLessonCard('10', 'Lesson 10', '/german/assimil/German1-10.mp3');
+			addLessonCard('11', 'Lesson 11', '/german/assimil/German1-11.mp3');
+			addLessonCard('12', 'Lesson 12', '/german/assimil/German1-12.mp3');
+			addLessonCard('13', 'Lesson 13', '/german/assimil/German1-13.mp3');
+			addLessonCard('14', 'Lesson 14', '/german/assimil/German1-14.mp3');
+			addLessonCard('15', 'Lesson 15', '/german/assimil/German1-15.mp3');
+			addLessonCard('16', 'Lesson 16', '/german/assimil/German1-16.mp3');
+			addLessonCard('17', 'Lesson 17', '/german/assimil/German1-17.mp3');
+			addLessonCard('18', 'Lesson 18', '/german/assimil/German1-18.mp3');
+			addLessonCard('19', 'Lesson 19', '/german/assimil/German1-19.mp3');
+			addLessonCard('20', 'Lesson 20', '/german/assimil/German1-20.mp3');
+			addLessonCard('21', 'Lesson 21', '/german/assimil/German1-21.mp3');
+			addLessonCard('22', 'Lesson 22', '/german/assimil/German1-22.mp3');
+			addMissingCard('Lessons 23–26 missing');
+			addLessonCard('27', 'Lesson 27', '/german/assimil/German2-1.mp3');
+			addLessonCard('28', 'Lesson 28', '/german/assimil/German2-2.mp3');
+			addLessonCard('29', 'Lesson 29', '/german/assimil/German2-3.mp3');
+			addLessonCard('30', 'Lesson 30', '/german/assimil/German2-4.mp3');
+			addLessonCard('31', 'Lesson 31', '/german/assimil/German2-5.mp3');
+			addLessonCard('32', 'Lesson 32', '/german/assimil/German2-6.mp3');
+			addLessonCard('33', 'Lesson 33', '/german/assimil/German2-7.mp3');
+			addLessonCard('34', 'Lesson 34', '/german/assimil/German2-8.mp3');
+			addLessonCard('35', 'Lesson 35', '/german/assimil/German2-9.mp3');
+			addLessonCard('36', 'Lesson 36', '/german/assimil/German2-10.mp3');
+			addLessonCard('37', 'Lesson 37', '/german/assimil/German2-11.mp3');
+			addLessonCard('38', 'Lesson 38', '/german/assimil/German2-12.mp3');
+			addLessonCard('39', 'Lesson 39', '/german/assimil/German2-13.mp3');
+			addLessonCard('40', 'Lesson 40', '/german/assimil/German2-14.mp3');
+			addLessonCard('41', 'Lesson 41', '/german/assimil/German2-15.mp3');
+			addLessonCard('42', 'Lesson 42', '/german/assimil/German2-16.mp3');
+			addLessonCard('43', 'Lesson 43', '/german/assimil/German2-17.mp3');
+			addLessonCard('44', 'Lesson 44', '/german/assimil/German2-18.mp3');
+			addLessonCard('45', 'Lesson 45', '/german/assimil/German2-19.mp3');
+			addLessonCard('46', 'Lesson 46', '/german/assimil/German2-20.mp3');
+			addLessonCard('47', 'Lesson 47', '/german/assimil/German2-21.mp3');
+			addLessonCard('48', 'Lesson 48', '/german/assimil/German2-22.mp3');
+			addLessonCard('49', 'Lesson 49', '/german/assimil/German2-23.mp3');
+			addLessonCard('50', 'Lesson 50', '/german/assimil/German2-24.mp3');
+			addLessonCard('51', 'Lesson 51', '/german/assimil/German2-25.mp3');
+			addLessonCard('52', 'Lesson 52', '/german/assimil/German2-26.mp3');
+			addLessonCard('53', 'Lesson 53', '/german/assimil/German3-1.mp3');
+			addLessonCard('54', 'Lesson 54', '/german/assimil/German3-2.mp3');
+			addLessonCard('55', 'Lesson 55', '/german/assimil/German3-3.mp3');
+			addLessonCard('56', 'Lesson 56', '/german/assimil/German3-4.mp3');
+			addLessonCard('57', 'Lesson 57', '/german/assimil/German3-5.mp3');
+			addLessonCard('58', 'Lesson 58', '/german/assimil/German3-6.mp3');
+			addLessonCard('59', 'Lesson 59', '/german/assimil/German3-7.mp3');
+			addLessonCard('60', 'Lesson 60', '/german/assimil/German3-8.mp3');
+			addLessonCard('61', 'Lesson 61', '/german/assimil/German3-9.mp3');
+			addLessonCard('62', 'Lesson 62', '/german/assimil/German3-10.mp3');
+			addLessonCard('63', 'Lesson 63', '/german/assimil/German3-11.mp3');
+			addLessonCard('64', 'Lesson 64', '/german/assimil/German3-12.mp3');
+			addLessonCard('65', 'Lesson 65', '/german/assimil/German3-13.mp3');
+			addLessonCard('66', 'Lesson 66', '/german/assimil/German3-14.mp3');
+			addLessonCard('67', 'Lesson 67', '/german/assimil/German3-15.mp3');
+			addLessonCard('68', 'Lesson 68', '/german/assimil/German3-16.mp3');
+			addLessonCard('69', 'Lesson 69', '/german/assimil/German3-17.mp3');
+			addLessonCard('70', 'Lesson 70', '/german/assimil/German3-18.mp3');
+			addLessonCard('71', 'Lesson 71', '/german/assimil/German3-19.mp3');
+			addLessonCard('72', 'Lesson 72', '/german/assimil/German3-20.mp3');
+			addLessonCard('73', 'Lesson 73', '/german/assimil/German3-21.mp3');
+			addLessonCard('74', 'Lesson 74', '/german/assimil/German3-22.mp3');
+			addLessonCard('75', 'Lesson 75', '/german/assimil/German3-23.mp3');
+			addLessonCard('76', 'Lesson 76', '/german/assimil/German3-24.mp3');
+			addLessonCard('77', 'Lesson 77', '/german/assimil/German4-1.mp3');
+			addLessonCard('78', 'Lesson 78', '/german/assimil/German4-2.mp3');
+			addLessonCard('79', 'Lesson 79', '/german/assimil/German4-3.mp3');
+			addLessonCard('80', 'Lesson 80', '/german/assimil/German4-4.mp3');
+			addLessonCard('81', 'Lesson 81', '/german/assimil/German4-5.mp3');
+			addLessonCard('82', 'Lesson 82', '/german/assimil/German4-6.mp3');
+			addLessonCard('83', 'Lesson 83', '/german/assimil/German4-7.mp3');
+			addLessonCard('84', 'Lesson 84', '/german/assimil/German4-8.mp3');
+			addLessonCard('85', 'Lesson 85', '/german/assimil/German4-9.mp3');
+			addLessonCard('86', 'Lesson 86', '/german/assimil/German4-10.mp3');
+			addLessonCard('87', 'Lesson 87', '/german/assimil/German4-11.mp3');
+			addLessonCard('88', 'Lesson 88', '/german/assimil/German4-12.mp3');
+			addLessonCard('89', 'Lesson 89', '/german/assimil/German4-13.mp3');
+			addLessonCard('90', 'Lesson 90', '/german/assimil/German4-14.mp3');
+			addLessonCard('91', 'Lesson 91', '/german/assimil/German4-15.mp3');
+			addLessonCard('92', 'Lesson 92', '/german/assimil/German4-16.mp3');
+			addLessonCard('93', 'Lesson 93', '/german/assimil/German4-17.mp3');
+			addLessonCard('94', 'Lesson 94', '/german/assimil/German4-18.mp3');
+			addLessonCard('95', 'Lesson 95', '/german/assimil/German4-19.mp3');
+			addLessonCard('96', 'Lesson 96', '/german/assimil/German4-20.mp3');
+			addLessonCard('97', 'Lesson 97', '/german/assimil/German4-21.mp3');
+			addLessonCard('98', 'Lesson 98', '/german/assimil/German4-22.mp3');
+			addLessonCard('99', 'Lesson 99', '/german/assimil/German4-23.mp3');
+			addLessonCard('100','Lesson 100','/german/assimil/German4-24.mp3');
 		</script>
 	</body>
 </html>
-
