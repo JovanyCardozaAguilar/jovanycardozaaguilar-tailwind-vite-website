@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<title>Gurmukhi Alphabet</title>
+		<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+	background-color: #d698fa;
+	font-family: 'Courier New', monospace;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	padding: 12px 20px;
+	border-bottom: 3px solid black;
+	background: #FDFDFD;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.neo-btn-sm {
+	position: relative;
+	display: inline-block;
+}
+.neo-btn-sm::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: black;
+	transform: translate(3px, 3px);
+	z-index: -1;
+}
+.neo-btn-sm a {
+	position: relative;
+	display: block;
+	font-family: 'Courier New', monospace;
+	font-weight: 700;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	background: white;
+	color: black;
+	border: 2px solid black;
+	padding: 6px 16px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: transform 0.15s;
+}
+.neo-btn-sm a:hover { transform: translate(-2px, -2px); }
+.neo-btn-sm a:active { transform: translate(2px, 2px); }
+
+main {
+	padding-top: 90px;
+	padding-bottom: 60px;
+	max-width: 900px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+h1 {
+	font-family: 'Courier New', monospace;
+	font-size: clamp(22px, 5vw, 36px);
+	font-weight: 700;
+	color: black;
+	letter-spacing: -0.02em;
+	margin: 28px 0 24px;
+}
+
+/* ── Row section ── */
+.row-section {
+	margin-bottom: 32px;
+}
+
+.row-label {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: #1a1a1a;
+	background: white;
+	border: 2px solid black;
+	border-bottom: none;
+	padding: 5px 14px;
+	display: inline-block;
+	position: relative;
+}
+.row-label::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: black;
+	transform: translate(3px, 3px);
+	z-index: -1;
+}
+
+.tile-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 12px;
+	border: 3px solid black;
+	background: #fcc019;
+	border-radius: 12px;
+}
+
+/* ── Individual tile ── */
+.tile {
+	position: relative;
+	background: #FFF8E7;
+	width: calc((100% - 12px * 4) / 5);
+	aspect-ratio: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	cursor: pointer;
+	border: 2.5px solid black;
+	border-radius: 14px;
+	box-shadow: 4px 4px 0px black;
+	transition: transform 0.1s, box-shadow 0.1s, background-color 0.1s;
+	user-select: none;
+	outline: none;
+}
+
+	@media (max-width: 500px) {
+		.tile { width: calc((100% - 12px * 3) / 4); }
+	}
+
+	.tile:hover {
+		background: #86efac;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0px black;
+		z-index: 1;
+	}
+
+	.tile:active,
+	.tile.playing {
+		transform: translate(3px, 3px);
+		box-shadow: 1px 1px 0px black;
+		z-index: 1;
+	}
+
+	.tile.playing {
+		background: #86efac;
+	}
+
+	.tile-glyph {
+		font-size: clamp(28px, 6vw, 44px);
+		line-height: 1;
+		color: black;
+		font-family: 'Courier New', monospace;
+	}
+
+	.tile-name {
+		font-size: 10px;
+		font-weight: 700;
+		color: #444;
+		letter-spacing: 0.04em;
+		text-align: center;
+		padding: 0 4px;
+	}
+
+	.tile-roman {
+		font-size: 9px;
+		color: #888;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	/* Playing indicator dot */
+	.tile.playing .tile-glyph {
+		color: #000;
+	}
+	.tile.playing::after {
+		content: '';
+		position: absolute;
+		bottom: 6px;
+		right: 6px;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: black;
+		animation: blink 0.5s ease-in-out infinite alternate;
+	}
+	@keyframes blink {
+		from { opacity: 1; }
+		to   { opacity: 0.2; }
+	}
+
+	/* ── Toast ── */
+	#toast {
+		position: fixed;
+		bottom: 28px;
+		left: 50%;
+		transform: translateX(-50%) translateY(20px);
+		background: black;
+		color: white;
+		font-family: 'Courier New', monospace;
+		font-size: 13px;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		padding: 10px 24px;
+		opacity: 0;
+		transition: opacity 0.2s, transform 0.2s;
+		pointer-events: none;
+		white-space: nowrap;
+		z-index: 200;
+	}
+	#toast.show {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+		</style>
+	</head>
+	<body>
+
+		<header>
+			<div class="neo-btn-sm"><a href="punjabi.html">← Back</a></div>
+			<span style="font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Gurmukhi Alphabet</span>
+		</header>
+
+		<main>
+			<h1>ਅੱਖਰਮਾਲਾ Alphabet</h1>
+			<div id="alphabet"></div>
+		</main>
+
+		<div id="toast"></div>
+
+		<script>
+			const LETTERS = [
+				// Row 0 — Vowel bearers (ਵਾਹਕ)
+				["ੳ","Oora","-","(carrier)","Row 0 — Vowel bearers","/punjabi/sounds/u.mp3"],
+				["ਅ","Aara","a","(carrier)","Row 0 — Vowel bearers","/punjabi/sounds/erra.mp3"],
+				["ੲ","Iri","-","(carrier)","Row 0 — Vowel bearers","/punjabi/sounds/erri.mp3"],
+				// Row 1 — Sibilants
+				["ਸ","Sassā","s","/s/","Row 1 — Sibilants","/punjabi/sounds/sassa.mp3"],
+				["ਹ","Hāhā","h","/ɦ/","Row 1 — Sibilants","/punjabi/sounds/haha.mp3"],
+				// Row 2 — Velars
+				["ਕ","Kakkā","k","/k/","Row 2 — Velars","/punjabi/sounds/kaka1.mp3"],
+				["ਖ","Khakhkhā","kh","/kʰ/","Row 2 — Velars","/punjabi/sounds/khakha.mp3"],
+				["ਗ","Gaggā","g","/ɡ/","Row 2 — Velars","/punjabi/sounds/gaga.mp3"],
+				["ਘ","Ghagghā","gh","/ɡʱ/","Row 2 — Velars","/punjabi/sounds/gh.mp3"],
+				["ਙ","Nganga","ng","/ŋ/","Row 2 — Velars","/punjabi/sounds/gaanga.mp3"],
+				// Row 3 — Palatals
+				["ਚ","Chachā","ch","/tʃ/","Row 3 — Palatals","/punjabi/sounds/chacha1.mp3"],
+				["ਛ","Chhachchhā","chh","/tʃʰ/","Row 3 — Palatals","/punjabi/sounds/chho.mp3"],
+				["ਜ","Jajjā","j","/dʒ/","Row 3 — Palatals","/punjabi/sounds/jajja.mp3"],
+				["ਝ","Jhajjhā","jh","/dʒʱ/","Row 3 — Palatals","/punjabi/sounds/jhajha.mp3"],
+				["ਞ","Nyanya","ny","/ɲ/","Row 3 — Palatals","/punjabi/sounds/yayya.mp3"],
+				// Row 4 — Retroflexes
+				["ਟ","Ṭaṭṭā","ṭ","/ʈ/","Row 4 — Retroflexes","/punjabi/sounds/tenka.mp3"],
+				["ਠ","Ṭhaṭṭhā","ṭh","/ʈʰ/","Row 4 — Retroflexes","/punjabi/sounds/thattha.mp3"],
+				["ਡ","Ḍaḍḍā","ḍ","/ɖ/","Row 4 — Retroflexes","/punjabi/sounds/dadda.mp3"],
+				["ਢ","Ḍhaḍḍhā","ḍh","/ɖʱ/","Row 4 — Retroflexes","/punjabi/sounds/dhada.mp3"],
+				["ਣ","Ṇaṇṇā","ṇ","/ɳ/","Row 4 — Retroflexes","/punjabi/sounds/naana.mp3"],
+				// Row 5 — Dentals
+				["ਤ","Tattā","t","/t̪/","Row 5 — Dentals","/punjabi/sounds/tatta.mp3"],
+				["ਥ","Thatthā","th","/t̪ʰ/","Row 5 — Dentals","/punjabi/sounds/thathaa_tha.mp3"],
+				["ਦ","Daddā","d","/d̪/","Row 5 — Dentals","/punjabi/sounds/dada.mp3"],
+				["ਧ","Dhaddhā","dh","/d̪ʱ/","Row 5 — Dentals","/punjabi/sounds/dha.mp3"],
+				["ਨ","Nannā","n","/n/","Row 5 — Dentals","/punjabi/sounds/nannaaa.mp3"],
+				// Row 6 — Labials
+				["ਪ","Pappā","p","/p/","Row 6 — Labials","/punjabi/sounds/papa.mp3"],
+				["ਫ","Phapphā","ph","/pʰ/","Row 6 — Labials","/punjabi/sounds/faffa.mp3"],
+				["ਬ","Babbā","b","/b/","Row 6 — Labials","/punjabi/sounds/babbaa.mp3"],
+				["ਭ","Bhabbhā","bh","/bʱ/","Row 6 — Labials","/punjabi/sounds/bhabba.mp3"],
+				["ਮ","Mammā","m","/m/","Row 6 — Labials","/punjabi/sounds/mama.mp3"],
+				// Row 7 — Approximants
+				["ਯ","Yayyā","y","/j/","Row 7 — Approximants","/punjabi/sounds/yayya_ya.mp3"],
+				["ਰ","Rārā","r","/ɾ/","Row 7 — Approximants","/punjabi/sounds/rarra.mp3"],
+				["ਲ","Lallā","l","/l/","Row 7 — Approximants","/punjabi/sounds/lalla.mp3"],
+				["ਵ","Vavvā","v","/ʋ/","Row 7 — Approximants","/punjabi/sounds/vavaa.mp3"],
+				["ੜ","Rarra","ṛ","/ɽ/","Row 7 — Approximants","/punjabi/sounds/arrara.mp3"],
+			];
+
+			// ── Group by row ─────────────────────────────────────────────────────────────
+			const rows = {};
+			for (const letter of LETTERS) {
+				const rowLabel = letter[4];
+				if (!rows[rowLabel]) rows[rowLabel] = [];
+				rows[rowLabel].push(letter);
+			}
+
+			// ── Build DOM ─────────────────────────────────────────────────────────────────
+			const container = document.getElementById('alphabet');
+
+			for (const [rowName, letters] of Object.entries(rows)) {
+				const section = document.createElement('div');
+				section.className = 'row-section';
+
+				const label = document.createElement('div');
+				label.className = 'row-label';
+				label.textContent = rowName;
+				section.appendChild(label);
+
+				const grid = document.createElement('div');
+				grid.className = 'tile-grid';
+
+				for (const [glyph, name, roman, ipa, , url] of letters) {
+					const tile = document.createElement('div');
+					tile.className = 'tile';
+					tile.setAttribute('tabindex', '0');
+					tile.setAttribute('role', 'button');
+					tile.setAttribute('aria-label', `${name} — ${roman}`);
+
+					tile.innerHTML = `
+			<div class="tile-glyph">${glyph}</div>
+			<div class="tile-name">${name}</div>
+			<div class="tile-roman">${roman === '-' ? '' : roman}</div>
+		`;
+
+					tile.addEventListener('click', () => playTile(tile, url, name, ipa));
+					tile.addEventListener('keydown', e => {
+						if (e.key === 'Enter' || e.key === ' ') playTile(tile, url, name, ipa);
+					});
+
+					grid.appendChild(tile);
+				}
+
+				section.appendChild(grid);
+				container.appendChild(section);
+			}
+
+			// ── Audio ─────────────────────────────────────────────────────────────────────
+			let currentAudio = null;
+			let currentTile = null;
+			let toastTimer = null;
+
+			function playTile(tile, url, name, ipa) {
+				// Stop previous
+				if (currentAudio) {
+					currentAudio.pause();
+					currentAudio.currentTime = 0;
+				}
+				if (currentTile) currentTile.classList.remove('playing');
+
+				currentTile = tile;
+				tile.classList.add('playing');
+
+				currentAudio = new Audio(url);
+				currentAudio.play().catch(() => tile.classList.remove('playing'));
+				currentAudio.onended = () => tile.classList.remove('playing');
+				currentAudio.onerror = () => tile.classList.remove('playing');
+
+				showToast(`${name}  ${ipa}`);
+			}
+
+			// ── Toast ─────────────────────────────────────────────────────────────────────
+			const toast = document.getElementById('toast');
+
+			function showToast(text) {
+				clearTimeout(toastTimer);
+				toast.textContent = text;
+				toast.classList.add('show');
+				toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+			}
+		</script>
+	</body>
+</html>

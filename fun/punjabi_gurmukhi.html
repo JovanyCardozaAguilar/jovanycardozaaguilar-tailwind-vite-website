@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<title>Gurmukhi Drill</title>
+		<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+	background-color: #d698fa;
+	font-family: 'Courier New', monospace;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+    /* ── Nav (matches parent site) ── */
+    header {
+	    position: fixed;
+	    width: 100%;
+	    padding: 12px 20px;
+	    border-bottom: 3px solid black;
+	    background: #FDFDFD;
+	    z-index: 100;
+	    display: flex;
+	    align-items: center;
+	    gap: 12px;
+    }
+    .neo-btn-sm {
+	    position: relative;
+	    display: inline-block;
+    }
+    .neo-btn-sm::after {
+	    content: '';
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(3px, 3px);
+	    z-index: -1;
+    }
+    .neo-btn-sm a, .neo-btn-sm button {
+	    position: relative;
+	    display: block;
+	    font-family: 'Courier New', monospace;
+	    font-weight: 700;
+	    font-size: 12px;
+	    text-transform: uppercase;
+	    letter-spacing: 0.1em;
+	    background: white;
+	    color: black;
+	    border: 2px solid black;
+	    padding: 6px 16px;
+	    text-decoration: none;
+	    cursor: pointer;
+	    transition: transform 0.15s;
+    }
+    .neo-btn-sm a:hover, .neo-btn-sm button:hover {
+	    transform: translate(-2px, -2px);
+    }
+    .neo-btn-sm a:active, .neo-btn-sm button:active {
+	    transform: translate(2px, 2px);
+    }
+
+    /* ── Main layout ── */
+    main {
+	    padding-top: 100px;
+	    padding-bottom: 60px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap: 28px;
+	    min-height: 100vh;
+    }
+
+    h1 {
+	    font-family: 'Courier New', monospace;
+	    font-size: clamp(22px, 5vw, 36px);
+	    font-weight: 700;
+	    color: black;
+	    letter-spacing: -0.02em;
+    }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+	    width: min(520px, 92vw);
+    }
+    .progress-label {
+	    font-size: 12px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    letter-spacing: 0.08em;
+	    margin-bottom: 6px;
+	    color: #1a1a1a;
+    }
+    .progress-track {
+	    width: 100%;
+	    height: 14px;
+	    background: white;
+	    border: 2px solid black;
+	    position: relative;
+    }
+    .progress-track::after {
+	    content: '';
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(3px, 3px);
+	    z-index: -1;
+    }
+    .progress-fill {
+	    height: 100%;
+	    background: #fcc019;
+	    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── Card ── */
+    .card-outer {
+	    position: relative;
+	    width: min(520px, 92vw);
+    }
+    .card-shadow {
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(6px, 6px);
+	    border-radius: 4px;
+    }
+    .card {
+	    position: relative;
+	    background: #fefcff;
+	    border: 4px solid black;
+	    border-radius: 4px;
+	    padding: 40px 32px 36px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap: 0;
+	    min-height: 340px;
+	    justify-content: center;
+    }
+
+    /* ── Letter display ── */
+    .letter-block {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap: 10px;
+	    width: 100%;
+    }
+    .letter-glyph {
+	    font-size: clamp(96px, 20vw, 140px);
+	    line-height: 1;
+	    color: black;
+	    font-family: 'Courier New', monospace;
+	    user-select: none;
+	    transition: opacity 0.2s;
+    }
+    .letter-row-label {
+	    font-size: 11px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    letter-spacing: 0.12em;
+	    color: #666;
+	    background: #f0f0f0;
+	    border: 2px solid black;
+	    padding: 3px 12px;
+    }
+
+    /* ── Divider ── */
+    .card-divider {
+	    width: 100%;
+	    height: 3px;
+	    background: black;
+	    margin: 28px 0 24px;
+	    opacity: 0;
+	    transition: none;
+    }
+    .card-divider.visible {
+	    opacity: 1;
+	    transition: opacity 0.3s 0.1s;
+    }
+
+    /* ── Answer section ── */
+    .answer-block {
+	    width: 100%;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap: 14px;
+	    opacity: 0;
+	    transform: translateY(12px);
+	    transition: none;
+	    pointer-events: none;
+    }
+    .answer-block.visible {
+	    opacity: 1;
+	    transform: translateY(0);
+	    pointer-events: auto;
+	    transition: opacity 0.35s 0.15s, transform 0.35s 0.15s;
+    }
+    .answer-name {
+	    font-size: clamp(22px, 5vw, 32px);
+	    font-weight: 700;
+	    color: black;
+	    letter-spacing: 0.02em;
+    }
+    .answer-ipa {
+	    font-size: 15px;
+	    color: #444;
+	    letter-spacing: 0.04em;
+    }
+    .answer-romanization {
+	    font-size: 13px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    letter-spacing: 0.1em;
+	    background: #fcc019;
+	    border: 2px solid black;
+	    padding: 4px 16px;
+    }
+
+    /* ── Audio button ── */
+    .audio-btn {
+	    position: relative;
+	    display: inline-block;
+	    margin-top: 4px;
+    }
+    .audio-btn::after {
+	    content: '';
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(4px, 4px);
+	    z-index: -1;
+    }
+    .audio-btn button {
+	    position: relative;
+	    display: flex;
+	    align-items: center;
+	    gap: 8px;
+	    font-family: 'Courier New', monospace;
+	    font-weight: 700;
+	    font-size: 13px;
+	    text-transform: uppercase;
+	    letter-spacing: 0.08em;
+	    background: #86efac;
+	    color: black;
+	    border: 2px solid black;
+	    padding: 8px 20px;
+	    cursor: pointer;
+	    transition: transform 0.15s;
+    }
+    .audio-btn button:hover { transform: translate(-2px,-2px); }
+    .audio-btn button:active { transform: translate(2px,2px); }
+    .audio-btn button.playing {
+	    background: #fcc019;
+	    animation: pulse-btn 0.6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-btn {
+	    from { transform: translate(0,0); }
+	    to   { transform: translate(-1px,-1px); }
+    }
+
+    /* ── Action buttons ── */
+    .btn-row {
+	    display: flex;
+	    gap: 16px;
+	    margin-top: 8px;
+    }
+    .neo-action {
+	    position: relative;
+	    display: inline-block;
+    }
+    .neo-action::after {
+	    content: '';
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(5px, 5px);
+	    z-index: -1;
+	    transition: transform 0.15s;
+    }
+    .neo-action:hover::after { transform: translate(3px,3px); }
+    .neo-action:active::after { transform: translate(6px,6px); }
+    .neo-action button {
+	    position: relative;
+	    font-family: 'Courier New', monospace;
+	    font-weight: 700;
+	    font-size: 14px;
+	    text-transform: uppercase;
+	    letter-spacing: 0.1em;
+	    border: 3px solid black;
+	    padding: 12px 32px;
+	    cursor: pointer;
+	    transition: transform 0.15s;
+	    min-width: 120px;
+    }
+    .neo-action:hover button { transform: translate(-2px,-2px); }
+    .neo-action:active button { transform: translate(3px,3px); }
+    .btn-flip button  { background: #fcc019; color: black; }
+    .btn-next button  { background: #86efac; color: black; }
+    .btn-again button { background: #fda4af; color: black; }
+
+    /* ── Completion screen ── */
+    .complete-screen {
+	    display: none;
+	    flex-direction: column;
+	    align-items: center;
+	    gap: 20px;
+	    text-align: center;
+	    padding: 20px 0;
+    }
+    .complete-screen.visible { display: flex; }
+    .complete-title {
+	    font-size: clamp(28px, 6vw, 48px);
+	    font-weight: 700;
+	    line-height: 1;
+    }
+    .complete-score {
+	    font-size: 16px;
+	    background: white;
+	    border: 3px solid black;
+	    padding: 10px 28px;
+	    position: relative;
+    }
+    .complete-score::after {
+	    content: '';
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(4px,4px);
+	    z-index: -1;
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+	    display: flex;
+	    gap: 12px;
+	    width: min(520px, 92vw);
+	    justify-content: center;
+	    flex-wrap: wrap;
+    }
+    .stat-chip {
+	    font-size: 12px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    letter-spacing: 0.07em;
+	    border: 2px solid black;
+	    padding: 4px 14px;
+	    background: white;
+	    position: relative;
+    }
+    .stat-chip::after {
+	    content: '';
+	    position: absolute;
+	    inset: 0;
+	    background: black;
+	    transform: translate(3px,3px);
+	    z-index: -1;
+    }
+    .stat-chip.correct { background: #86efac; }
+    .stat-chip.wrong   { background: #fda4af; }
+		</style>
+	</head>
+	<body>
+
+		<header>
+			<div class="neo-btn-sm"><a href="punjabi.html">← Back</a></div>
+			<h1 style="font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Gurmukhi Drill</h1>
+		</header>
+
+		<main>
+			<h1>ਅੱਖਰ Drill</h1>
+
+			<!-- Progress -->
+			<div class="progress-wrap">
+				<div class="progress-label">Progress: <span id="prog-label">0 / 35</span></div>
+				<div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+			</div>
+
+			<!-- Stats -->
+			<div class="stats-bar">
+				<div class="stat-chip correct">✓ Correct: <span id="stat-correct">0</span></div>
+				<div class="stat-chip wrong">✗ Missed: <span id="stat-wrong">0</span></div>
+				<div class="stat-chip">🔁 Round: <span id="stat-round">1</span></div>
+			</div>
+
+			<!-- Drill card -->
+			<div id="drill-area">
+				<div class="card-outer">
+					<div class="card-shadow"></div>
+					<div class="card" id="main-card">
+
+						<div class="letter-block" id="letter-block">
+							<div class="letter-glyph" id="letter-glyph">ਕ</div>
+							<div class="letter-row-label" id="letter-row">Row 2 — Velars</div>
+						</div>
+
+						<div class="card-divider" id="card-divider"></div>
+
+						<div class="answer-block" id="answer-block">
+							<div class="answer-name" id="answer-name">Kakkā</div>
+							<div class="answer-romanization" id="answer-roman">k</div>
+							<div class="answer-ipa" id="answer-ipa">IPA: /k/</div>
+							<div class="audio-btn">
+								<button id="audio-btn" onclick="playSound()">
+									<i class="fas fa-volume-up"></i> Play Sound
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Buttons -->
+				<div class="btn-row" id="btn-row" style="justify-content:center; margin-top:20px;">
+					<div class="neo-action btn-flip" id="btn-flip-wrap">
+						<button onclick="flipCard()">Flip</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Complete screen -->
+			<div class="complete-screen" id="complete-screen">
+				<div class="complete-title">Round Complete! 🎉</div>
+				<div class="complete-score" id="complete-score">Score: 0 / 35</div>
+				<div class="btn-row">
+					<div class="neo-action btn-next">
+						<button onclick="restartDrill()">Next Round →</button>
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+		<script>
+			// ── Letter data ──────────────────────────────────────────────────────────────
+			// Each entry: [glyph, name, romanization, IPA, row label, audio_url]
+			// Replace each "" with the full URL from dic.learnpunjabi.org
+			// e.g. "https://dic.learnpunjabi.org/sound/2/erra.mp3"
+			const LETTERS = [
+				// Row 0 — Vowel bearers (ਵਾਹਕ) — carriers, no inherent consonant sound
+				["ੳ","Oora","-","(carrier)","Row 0 — Vowel bearers","/punjabi/sounds/u.mp3"],
+				["ਅ","Aara","a","(carrier)","Row 0 — Vowel bearers","/punjabi/sounds/erra.mp3"],
+				["ੲ","Iri","-","(carrier)","Row 0 — Vowel bearers","/punjabi/sounds/erri.mp3"],
+				// Row 1 — Sibilants
+				["ਸ","Sassā","s","/s/","Row 1 — Sibilants","/punjabi/sounds/sassa.mp3"],
+				["ਹ","Hāhā","h","/ɦ/","Row 1 — Sibilants","/punjabi/sounds/haha.mp3"],
+				// Row 2 — Velars
+				["ਕ","Kakkā","k","/k/","Row 2 — Velars","/punjabi/sounds/kaka1.mp3"],
+				["ਖ","Khakhkhā","kh","/kʰ/","Row 2 — Velars","/punjabi/sounds/khakha.mp3"],
+				["ਗ","Gaggā","g","/ɡ/","Row 2 — Velars","/punjabi/sounds/gaga.mp3"],
+				["ਘ","Ghagghā","gh","/ɡʱ/","Row 2 — Velars","/punjabi/sounds/gh.mp3"],
+				["ਙ","Nganga","ng","/ŋ/","Row 2 — Velars","/punjabi/sounds/gaanga.mp3"],
+				// Row 3 — Palatals
+				["ਚ","Chachā","ch","/tʃ/","Row 3 — Palatals","/punjabi/sounds/chacha1.mp3"],
+				["ਛ","Chhachchhā","chh","/tʃʰ/","Row 3 — Palatals","/punjabi/sounds/chho.mp3"],
+				["ਜ","Jajjā","j","/dʒ/","Row 3 — Palatals","/punjabi/sounds/jajja.mp3"],
+				["ਝ","Jhajjhā","jh","/dʒʱ/","Row 3 — Palatals","/punjabi/sounds/jhajha.mp3"],
+				["ਞ","Nyanya","ny","/ɲ/","Row 3 — Palatals","/punjabi/sounds/yayya.mp3"],
+				// Row 4 — Retroflexes
+				["ਟ","Ṭaṭṭā","ṭ","/ʈ/","Row 4 — Retroflexes","/punjabi/sounds/tenka.mp3"],
+				["ਠ","Ṭhaṭṭhā","ṭh","/ʈʰ/","Row 4 — Retroflexes","/punjabi/sounds/thattha.mp3"],
+				["ਡ","Ḍaḍḍā","ḍ","/ɖ/","Row 4 — Retroflexes","/punjabi/sounds/dadda.mp3"],
+				["ਢ","Ḍhaḍḍhā","ḍh","/ɖʱ/","Row 4 — Retroflexes","/punjabi/sounds/dhada.mp3"],
+				["ਣ","Ṇaṇṇā","ṇ","/ɳ/","Row 4 — Retroflexes","/punjabi/sounds/naana.mp3"],
+				// Row 5 — Dentals
+				["ਤ","Tattā","t","/t̪/","Row 5 — Dentals","/punjabi/sounds/tatta.mp3"],
+				["ਥ","Thatthā","th","/t̪ʰ/","Row 5 — Dentals","/punjabi/sounds/thathaa_tha.mp3"],
+				["ਦ","Daddā","d","/d̪/","Row 5 — Dentals","/punjabi/sounds/dada.mp3"],
+				["ਧ","Dhaddhā","dh","/d̪ʱ/","Row 5 — Dentals","/punjabi/sounds/dha.mp3"],
+				["ਨ","Nannā","n","/n/","Row 5 — Dentals","/punjabi/sounds/nannaaa.mp3"],
+				// Row 6 — Labials
+				["ਪ","Pappā","p","/p/","Row 6 — Labials","/punjabi/sounds/papa.mp3"],
+				["ਫ","Phapphā","ph","/pʰ/","Row 6 — Labials","/punjabi/sounds/faffa.mp3"],
+				["ਬ","Babbā","b","/b/","Row 6 — Labials","/punjabi/sounds/babbaa.mp3"],
+				["ਭ","Bhabbhā","bh","/bʱ/","Row 6 — Labials","/punjabi/sounds/bhabba.mp3"],
+				["ਮ","Mammā","m","/m/","Row 6 — Labials","/punjabi/sounds/mama.mp3"],
+				// Row 7 — Approximants
+				["ਯ","Yayyā","y","/j/","Row 7 — Approximants","/punjabi/sounds/yayya_ya.mp3"],
+				["ਰ","Rārā","r","/ɾ/","Row 7 — Approximants","/punjabi/sounds/rarra.mp3"],
+				["ਲ","Lallā","l","/l/","Row 7 — Approximants","/punjabi/sounds/lalla.mp3"],
+				["ਵ","Vavvā","v","/ʋ/","Row 7 — Approximants","/punjabi/sounds/vavaa.mp3"],
+				["ੜ","Rarra","ṛ","/ɽ/","Row 7 — Approximants","/punjabi/sounds/arrara.mp3"],
+			];
+
+			// ── State ────────────────────────────────────────────────────────────────────
+			let deck = [];
+			let current = 0;
+			let flipped = false;
+			let correct = 0;
+			let wrong = 0;
+			let round = 1;
+
+			function shuffle(arr) {
+				for (let i = arr.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[arr[i], arr[j]] = [arr[j], arr[i]];
+				}
+				return arr;
+			}
+
+			function initDeck() {
+				deck = shuffle([...LETTERS]);
+				current = 0;
+				flipped = false;
+			}
+
+			// ── Render ───────────────────────────────────────────────────────────────────
+			function renderCard() {
+				const [glyph, name, roman, ipa, row] = deck[current];
+
+				// Hide instantly (transition:none on base state), update content, then
+				// adding .visible re-enables the transition for the reveal animation
+				document.getElementById('answer-block').classList.remove('visible');
+				document.getElementById('card-divider').classList.remove('visible');
+
+				document.getElementById('letter-glyph').textContent = glyph;
+				document.getElementById('letter-row').textContent = row;
+				document.getElementById('answer-name').textContent = name;
+				document.getElementById('answer-roman').textContent = roman;
+				document.getElementById('answer-ipa').textContent = 'IPA: ' + ipa;
+
+				const btnRow = document.getElementById('btn-row');
+				btnRow.innerHTML = `
+    <div class="neo-action btn-flip" id="btn-flip-wrap">
+      <button onclick="flipCard()">Flip</button>
+    </div>
+  `;
+
+				updateProgress();
+			}
+
+			function updateProgress() {
+				const total = deck.length;
+				const done = current;
+				const pct = (done / total) * 100;
+				document.getElementById('prog-fill').style.width = pct + '%';
+				document.getElementById('prog-label').textContent = done + ' / ' + total;
+				document.getElementById('stat-correct').textContent = correct;
+				document.getElementById('stat-wrong').textContent = wrong;
+				document.getElementById('stat-round').textContent = round;
+			}
+
+			// ── Flip ─────────────────────────────────────────────────────────────────────
+			function flipCard() {
+				flipped = true;
+				document.getElementById('card-divider').classList.add('visible');
+				document.getElementById('answer-block').classList.add('visible');
+				playSound();
+
+				// Replace flip button with Next + Missed
+				const btnRow = document.getElementById('btn-row');
+				btnRow.innerHTML = `
+    <div class="neo-action btn-again">
+      <button onclick="markWrong()">Missed</button>
+    </div>
+    <div class="neo-action btn-next">
+      <button onclick="markCorrect()">Got it ✓</button>
+    </div>
+  `;
+			}
+
+			// ── Mark ─────────────────────────────────────────────────────────────────────
+			function markCorrect() {
+				correct++;
+				nextCard();
+			}
+
+			function markWrong() {
+				wrong++;
+				// Push back into deck at a random later position so it comes up again
+				const remaining = deck.length - current - 1;
+				if (remaining > 0) {
+					const insertAt = current + 1 + Math.floor(Math.random() * remaining);
+					deck.splice(insertAt, 0, deck[current]);
+				} else {
+					deck.push(deck[current]);
+				}
+				nextCard();
+			}
+
+			function nextCard() {
+				current++;
+				if (current >= deck.length) {
+					showComplete();
+				} else {
+					renderCard();
+				}
+			}
+
+			// ── Complete ─────────────────────────────────────────────────────────────────
+			function showComplete() {
+				document.getElementById('drill-area').style.display = 'none';
+				const cs = document.getElementById('complete-screen');
+				cs.classList.add('visible');
+				document.getElementById('complete-score').textContent =
+					'Score: ' + correct + ' / ' + LETTERS.length + ' — Round ' + round;
+				updateProgress();
+			}
+
+			function restartDrill() {
+				round++;
+				correct = 0;
+				wrong = 0;
+				initDeck();
+				document.getElementById('complete-screen').classList.remove('visible');
+				document.getElementById('drill-area').style.display = 'block';
+				renderCard();
+			}
+
+			// ── Audio ────────────────────────────────────────────────────────────────────
+			let currentAudio = null;
+
+			function playSound() {
+				const [,,,,,url] = deck[current];
+				const btn = document.getElementById('audio-btn');
+				if (!btn) return;
+				if (!url) return; // no URL set yet for this letter — silently skip
+
+				if (currentAudio) {
+					currentAudio.pause();
+					currentAudio.currentTime = 0;
+				}
+
+				currentAudio = new Audio(url);
+				btn.classList.add('playing');
+				currentAudio.play().catch(() => btn.classList.remove('playing'));
+				currentAudio.onended = () => btn.classList.remove('playing');
+				currentAudio.onerror = () => btn.classList.remove('playing');
+			}
+
+			// ── Boot ─────────────────────────────────────────────────────────────────────
+			initDeck();
+			renderCard();
+		</script>
+	</body>
+</html>
