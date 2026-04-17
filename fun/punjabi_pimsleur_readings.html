@@ -21,6 +21,170 @@
 			.article-card-ready {
 				transition: background-color 200ms;
 			}
+
+			* { box-sizing: border-box; }
+
+			.lesson-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.lesson-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.lesson-header {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.lesson-number {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #fcc019;
+				border: 2px solid black;
+				padding: 3px 12px;
+				white-space: nowrap;
+				font-family: 'Courier New', monospace;
+			}
+			.lesson-title {
+				font-size: 15px;
+				font-weight: 700;
+				color: black;
+				letter-spacing: 0.02em;
+				font-family: 'Courier New', monospace;
+			}
+			.player {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: white;
+				border: 2px solid black;
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.play-btn-wrap {
+				position: relative;
+				display: inline-block;
+				flex-shrink: 0;
+			}
+			.play-btn-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: black;
+				transform: translate(3px, 3px);
+				border-radius: 6px;
+				z-index: -1;
+			}
+			.play-toggle {
+				position: relative;
+				width: 36px;
+				height: 36px;
+				background: #86efac;
+				border: 2px solid black;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 13px;
+				color: black;
+				transition: transform 0.1s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.play-toggle:hover { transform: translate(-1px, -1px); }
+			.play-toggle:active { transform: translate(2px, 2px); }
+			.play-toggle.playing { background: #fcc019; }
+			.progress-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.progress-track {
+				width: 100%;
+				height: 8px;
+				background: #e5e5e5;
+				border: 1.5px solid black;
+				border-radius: 4px;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			.progress-fill {
+				height: 100%;
+				background: #fcc019;
+				border-radius: 4px;
+				width: 0%;
+				pointer-events: none;
+			}
+			.time-row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 10px;
+				font-weight: 700;
+				color: #666;
+				letter-spacing: 0.05em;
+				font-family: 'Courier New', monospace;
+			}
+			.volume-btn {
+				flex-shrink: 0;
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 14px;
+				color: #444;
+				padding: 4px;
+				transition: color 0.1s;
+			}
+			.volume-btn:hover { color: black; }
+
+			/* PDF card */
+			.pdf-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.pdf-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.pdf-card a {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				padding: 20px 24px;
+				text-decoration: none;
+				color: black;
+			}
+			.pdf-icon {
+				font-size: 22px;
+				color: black;
+				flex-shrink: 0;
+			}
+			.pdf-title {
+				font-size: 15px;
+				font-weight: 700;
+				font-family: 'Courier New', monospace;
+			}
+			.pdf-cta {
+				font-size: 12px;
+				color: #555;
+				margin-top: 3px;
+				font-family: 'Courier New', monospace;
+			}
 		</style>
 	</head>
 	<body style="overflow: auto;" class="bg-[#d698fa]">
@@ -75,93 +239,8 @@
 				</header>
 				<main class="pt-32 md:pt-24 container mx-auto px-4">
 					<div class="space-y-6">
-						<h1 class="text-3xl font-mono font-bold mb-8">Punjabi Stuff</h1>
-						<article class="article-card border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000]">
-							<a href="/punjabi/Reading & Guide.pdf" target="_blank" class="block p-4 text-black">
-								<h2 class="text-xl font-mono font-bold">Punjabi Reading Booklet</h2>
-								<span class="text-sm mt-2 block">Check It Out! →</span>
-							</a>
-						</article>
-						<h2 class="text-xl font-mono font-bold">Lesson 1</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 01.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 2</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 02.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 3</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 03.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 4</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 04.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 5</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 05.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 6</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 06.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 7</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 07.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 8</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 08.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 9</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 09.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 10</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 10.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 11</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 11.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 12</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 12.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 13</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 13.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 14</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 14.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 15</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 15.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 16</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 16.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 17</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 17.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 18</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 18.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 19</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 19.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 20</h2>
-						<audio controls>
-							<source src="/punjabi/Reading 20.mp3" type="audio/mpeg">
-						</audio>
+						<h1 class="text-3xl font-mono font-bold mb-8">Pimsleur Punjabi Readings</h1>
+						<div id="lessons"></div>
 					</div>
 				</main>
 			</div>
@@ -173,7 +252,157 @@
 					el.classList.add('article-card-ready');
 				});
 			});
+
+			const LESSONS = [
+				{ label: "01", title: "Reading 1",  src: "/punjabi/Reading 01.mp3" },
+				{ label: "02", title: "Reading 2",  src: "/punjabi/Reading 02.mp3" },
+				{ label: "03", title: "Reading 3",  src: "/punjabi/Reading 03.mp3" },
+				{ label: "04", title: "Reading 4",  src: "/punjabi/Reading 04.mp3" },
+				{ label: "05", title: "Reading 5",  src: "/punjabi/Reading 05.mp3" },
+				{ label: "06", title: "Reading 6",  src: "/punjabi/Reading 06.mp3" },
+				{ label: "07", title: "Reading 7",  src: "/punjabi/Reading 07.mp3" },
+				{ label: "08", title: "Reading 8",  src: "/punjabi/Reading 08.mp3" },
+				{ label: "09", title: "Reading 9",  src: "/punjabi/Reading 09.mp3" },
+				{ label: "10", title: "Reading 10", src: "/punjabi/Reading 10.mp3" },
+				{ label: "11", title: "Reading 11", src: "/punjabi/Reading 11.mp3" },
+				{ label: "12", title: "Reading 12", src: "/punjabi/Reading 12.mp3" },
+				{ label: "13", title: "Reading 13", src: "/punjabi/Reading 13.mp3" },
+				{ label: "14", title: "Reading 14", src: "/punjabi/Reading 14.mp3" },
+				{ label: "15", title: "Reading 15", src: "/punjabi/Reading 15.mp3" },
+				{ label: "16", title: "Reading 16", src: "/punjabi/Reading 16.mp3" },
+				{ label: "17", title: "Reading 17", src: "/punjabi/Reading 17.mp3" },
+				{ label: "18", title: "Reading 18", src: "/punjabi/Reading 18.mp3" },
+				{ label: "19", title: "Reading 19", src: "/punjabi/Reading 19.mp3" },
+				{ label: "20", title: "Reading 20", src: "/punjabi/Reading 20.mp3" },
+			];
+
+			const container = document.getElementById('lessons');
+			let activeAudio = null;
+			let activeBtn = null;
+			let activeFill = null;
+			let activeTimeEl = null;
+			let rafId = null;
+
+			// PDF card first
+			const pdfCard = document.createElement('div');
+			pdfCard.className = 'pdf-card';
+			pdfCard.innerHTML = `
+				<a href="/punjabi/Reading & Guide.pdf" target="_blank">
+					<span class="pdf-icon"><i class="fas fa-file-pdf"></i></span>
+					<div>
+						<div class="pdf-title">Punjabi Reading Booklet</div>
+						<div class="pdf-cta">Open PDF →</div>
+					</div>
+				</a>
+			`;
+			container.appendChild(pdfCard);
+
+			function fmt(s) {
+				if (isNaN(s) || !isFinite(s)) return '0:00';
+				const m = Math.floor(s / 60);
+				const sec = Math.floor(s % 60);
+				return `${m}:${sec.toString().padStart(2, '0')}`;
+			}
+
+			function stopAll() {
+				if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; }
+				if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+				if (activeFill) activeFill.style.width = '0%';
+				if (activeTimeEl) activeTimeEl.textContent = '0:00';
+				cancelAnimationFrame(rafId);
+				activeAudio = activeBtn = activeFill = activeTimeEl = null;
+			}
+
+			function tick(audio, fill, timeEl) {
+				if (!audio.paused) {
+					const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+					fill.style.width = pct + '%';
+					timeEl.textContent = fmt(audio.currentTime);
+					rafId = requestAnimationFrame(() => tick(audio, fill, timeEl));
+				}
+			}
+
+			LESSONS.forEach(({ label, title, src }) => {
+				const card = document.createElement('div');
+				card.className = 'lesson-card';
+				card.innerHTML = `
+					<div class="lesson-header">
+						<span class="lesson-number">${label}</span>
+						<span class="lesson-title">${title}</span>
+					</div>
+					<div class="player">
+						<div class="play-btn-wrap">
+							<button class="play-toggle" aria-label="Play ${title}"><i class="fas fa-play"></i></button>
+						</div>
+						<div class="progress-area">
+							<div class="progress-track"><div class="progress-fill"></div></div>
+							<div class="time-row">
+								<span class="current-time">0:00</span>
+								<span class="duration">--:--</span>
+							</div>
+						</div>
+						<button class="volume-btn" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+					</div>
+				`;
+
+				const btn    = card.querySelector('.play-toggle');
+				const fill   = card.querySelector('.progress-fill');
+				const track  = card.querySelector('.progress-track');
+				const curEl  = card.querySelector('.current-time');
+				const durEl  = card.querySelector('.duration');
+				const volBtn = card.querySelector('.volume-btn');
+				let audio = null;
+				let muted = false;
+
+				function getAudio() {
+					if (audio) return audio;
+					audio = new Audio(src);
+					audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+					audio.addEventListener('ended', () => {
+						btn.classList.remove('playing');
+						btn.innerHTML = '<i class="fas fa-play"></i>';
+						fill.style.width = '0%';
+						curEl.textContent = '0:00';
+						cancelAnimationFrame(rafId);
+					});
+					return audio;
+				}
+
+				btn.addEventListener('click', () => {
+					const a = getAudio();
+					if (!a.paused) {
+						a.pause();
+						btn.classList.remove('playing');
+						btn.innerHTML = '<i class="fas fa-play"></i>';
+						cancelAnimationFrame(rafId);
+					} else {
+						if (activeAudio && activeAudio !== a) stopAll();
+						a.play();
+						btn.classList.add('playing');
+						btn.innerHTML = '<i class="fas fa-pause"></i>';
+						activeAudio = a; activeBtn = btn; activeFill = fill; activeTimeEl = curEl;
+						rafId = requestAnimationFrame(() => tick(a, fill, curEl));
+					}
+				});
+
+				track.addEventListener('click', (e) => {
+					const a = getAudio();
+					if (!a.duration) return;
+					const rect = track.getBoundingClientRect();
+					a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration;
+					fill.style.width = (a.currentTime / a.duration * 100) + '%';
+					curEl.textContent = fmt(a.currentTime);
+				});
+
+				volBtn.addEventListener('click', () => {
+					const a = getAudio();
+					muted = !muted;
+					a.muted = muted;
+					volBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+				});
+
+				container.appendChild(card);
+			});
 		</script>
 	</body>
 </html>
-

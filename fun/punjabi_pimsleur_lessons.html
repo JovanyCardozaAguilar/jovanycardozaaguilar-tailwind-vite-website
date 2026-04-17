@@ -21,6 +21,131 @@
 			.article-card-ready {
 				transition: background-color 200ms;
 			}
+
+			* { box-sizing: border-box; }
+
+			.lesson-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.lesson-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.lesson-header {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.lesson-number {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #fcc019;
+				border: 2px solid black;
+				padding: 3px 12px;
+				white-space: nowrap;
+				font-family: 'Courier New', monospace;
+			}
+			.lesson-title {
+				font-size: 15px;
+				font-weight: 700;
+				color: black;
+				letter-spacing: 0.02em;
+				font-family: 'Courier New', monospace;
+			}
+			.player {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: white;
+				border: 2px solid black;
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.play-btn-wrap {
+				position: relative;
+				display: inline-block;
+				flex-shrink: 0;
+			}
+			.play-btn-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: black;
+				transform: translate(3px, 3px);
+				border-radius: 6px;
+				z-index: -1;
+			}
+			.play-toggle {
+				position: relative;
+				width: 36px;
+				height: 36px;
+				background: #86efac;
+				border: 2px solid black;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 13px;
+				color: black;
+				transition: transform 0.1s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.play-toggle:hover { transform: translate(-1px, -1px); }
+			.play-toggle:active { transform: translate(2px, 2px); }
+			.play-toggle.playing { background: #fcc019; }
+			.progress-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.progress-track {
+				width: 100%;
+				height: 8px;
+				background: #e5e5e5;
+				border: 1.5px solid black;
+				border-radius: 4px;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			.progress-fill {
+				height: 100%;
+				background: #fcc019;
+				border-radius: 4px;
+				width: 0%;
+				pointer-events: none;
+			}
+			.time-row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 10px;
+				font-weight: 700;
+				color: #666;
+				letter-spacing: 0.05em;
+				font-family: 'Courier New', monospace;
+			}
+			.volume-btn {
+				flex-shrink: 0;
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 14px;
+				color: #444;
+				padding: 4px;
+				transition: color 0.1s;
+			}
+			.volume-btn:hover { color: black; }
 		</style>
 	</head>
 	<body style="overflow: auto;" class="bg-[#d698fa]">
@@ -75,132 +200,8 @@
 				</header>
 				<main class="pt-32 md:pt-24 container mx-auto px-4">
 					<div class="space-y-6">
-						<h1 class="text-3xl font-mono font-bold mb-8">Punjabi Stuff</h1>
-						<h2 class="text-xl font-mono font-bold">Introduction</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 00 - Intro.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 1</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 01.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 2</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 02.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 3</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 03.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 4</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 04.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 5</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 05.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 6</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 06.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 7</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 07.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 8</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 08.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 9</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 09.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 10</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 10.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 11</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 11.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 12</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 12.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 13</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 13.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 14</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 14.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 15</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 15.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 16</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 16.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 17</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 17.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 18</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 18.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 19</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 19.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 20</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 20.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 21</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 21.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 22</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 22.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 23</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 23.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 24</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 24.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 25</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 25.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 26</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 26.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 27</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 27.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 28</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 28.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 29</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 29.mp3" type="audio/mpeg">
-						</audio>
-						<h2 class="text-xl font-mono font-bold">Lesson 30</h2>
-						<audio controls>
-							<source src="/punjabi/Lesson 30.mp3" type="audio/mpeg">
-						</audio>
-						<!-- add more posts -->
+						<h1 class="text-3xl font-mono font-bold mb-8">Pimsleur Punjabi</h1>
+						<div id="lessons"></div>
 					</div>
 				</main>
 			</div>
@@ -212,7 +213,156 @@
 					el.classList.add('article-card-ready');
 				});
 			});
+
+			const LESSONS = [
+				{ label: "Intro", title: "Introduction",  src: "/punjabi/Lesson 00 - Intro.mp3" },
+				{ label: "01",    title: "Lesson 1",      src: "/punjabi/Lesson 01.mp3" },
+				{ label: "02",    title: "Lesson 2",      src: "/punjabi/Lesson 02.mp3" },
+				{ label: "03",    title: "Lesson 3",      src: "/punjabi/Lesson 03.mp3" },
+				{ label: "04",    title: "Lesson 4",      src: "/punjabi/Lesson 04.mp3" },
+				{ label: "05",    title: "Lesson 5",      src: "/punjabi/Lesson 05.mp3" },
+				{ label: "06",    title: "Lesson 6",      src: "/punjabi/Lesson 06.mp3" },
+				{ label: "07",    title: "Lesson 7",      src: "/punjabi/Lesson 07.mp3" },
+				{ label: "08",    title: "Lesson 8",      src: "/punjabi/Lesson 08.mp3" },
+				{ label: "09",    title: "Lesson 9",      src: "/punjabi/Lesson 09.mp3" },
+				{ label: "10",    title: "Lesson 10",     src: "/punjabi/Lesson 10.mp3" },
+				{ label: "11",    title: "Lesson 11",     src: "/punjabi/Lesson 11.mp3" },
+				{ label: "12",    title: "Lesson 12",     src: "/punjabi/Lesson 12.mp3" },
+				{ label: "13",    title: "Lesson 13",     src: "/punjabi/Lesson 13.mp3" },
+				{ label: "14",    title: "Lesson 14",     src: "/punjabi/Lesson 14.mp3" },
+				{ label: "15",    title: "Lesson 15",     src: "/punjabi/Lesson 15.mp3" },
+				{ label: "16",    title: "Lesson 16",     src: "/punjabi/Lesson 16.mp3" },
+				{ label: "17",    title: "Lesson 17",     src: "/punjabi/Lesson 17.mp3" },
+				{ label: "18",    title: "Lesson 18",     src: "/punjabi/Lesson 18.mp3" },
+				{ label: "19",    title: "Lesson 19",     src: "/punjabi/Lesson 19.mp3" },
+				{ label: "20",    title: "Lesson 20",     src: "/punjabi/Lesson 20.mp3" },
+				{ label: "21",    title: "Lesson 21",     src: "/punjabi/Lesson 21.mp3" },
+				{ label: "22",    title: "Lesson 22",     src: "/punjabi/Lesson 22.mp3" },
+				{ label: "23",    title: "Lesson 23",     src: "/punjabi/Lesson 23.mp3" },
+				{ label: "24",    title: "Lesson 24",     src: "/punjabi/Lesson 24.mp3" },
+				{ label: "25",    title: "Lesson 25",     src: "/punjabi/Lesson 25.mp3" },
+				{ label: "26",    title: "Lesson 26",     src: "/punjabi/Lesson 26.mp3" },
+				{ label: "27",    title: "Lesson 27",     src: "/punjabi/Lesson 27.mp3" },
+				{ label: "28",    title: "Lesson 28",     src: "/punjabi/Lesson 28.mp3" },
+				{ label: "29",    title: "Lesson 29",     src: "/punjabi/Lesson 29.mp3" },
+				{ label: "30",    title: "Lesson 30",     src: "/punjabi/Lesson 30.mp3" },
+			];
+
+			const container = document.getElementById('lessons');
+			let activeAudio = null;
+			let activeBtn = null;
+			let activeFill = null;
+			let activeTimeEl = null;
+			let rafId = null;
+
+			function fmt(s) {
+				if (isNaN(s) || !isFinite(s)) return '0:00';
+				const m = Math.floor(s / 60);
+				const sec = Math.floor(s % 60);
+				return `${m}:${sec.toString().padStart(2, '0')}`;
+			}
+
+			function stopAll() {
+				if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; }
+				if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+				if (activeFill) activeFill.style.width = '0%';
+				if (activeTimeEl) activeTimeEl.textContent = '0:00';
+				cancelAnimationFrame(rafId);
+				activeAudio = activeBtn = activeFill = activeTimeEl = null;
+			}
+
+			function tick(audio, fill, timeEl) {
+				if (!audio.paused) {
+					const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+					fill.style.width = pct + '%';
+					timeEl.textContent = fmt(audio.currentTime);
+					rafId = requestAnimationFrame(() => tick(audio, fill, timeEl));
+				}
+			}
+
+			LESSONS.forEach(({ label, title, src }) => {
+				const card = document.createElement('div');
+				card.className = 'lesson-card';
+				card.innerHTML = `
+					<div class="lesson-header">
+						<span class="lesson-number">${label}</span>
+						<span class="lesson-title">${title}</span>
+					</div>
+					<div class="player">
+						<div class="play-btn-wrap">
+							<button class="play-toggle" aria-label="Play ${title}"><i class="fas fa-play"></i></button>
+						</div>
+						<div class="progress-area">
+							<div class="progress-track"><div class="progress-fill"></div></div>
+							<div class="time-row">
+								<span class="current-time">0:00</span>
+								<span class="duration">--:--</span>
+							</div>
+						</div>
+						<button class="volume-btn" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+					</div>
+				`;
+
+				const btn    = card.querySelector('.play-toggle');
+				const fill   = card.querySelector('.progress-fill');
+				const track  = card.querySelector('.progress-track');
+				const curEl  = card.querySelector('.current-time');
+				const durEl  = card.querySelector('.duration');
+				const volBtn = card.querySelector('.volume-btn');
+
+				// Audio is created lazily on first click — not on page load
+				let audio = null;
+				let muted = false;
+
+				function getAudio() {
+					if (audio) return audio;
+					audio = new Audio(src);
+					audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+					audio.addEventListener('ended', () => {
+						btn.classList.remove('playing');
+						btn.innerHTML = '<i class="fas fa-play"></i>';
+						fill.style.width = '0%';
+						curEl.textContent = '0:00';
+						cancelAnimationFrame(rafId);
+					});
+					return audio;
+				}
+
+				btn.addEventListener('click', () => {
+					const a = getAudio();
+					if (!a.paused) {
+						a.pause();
+						btn.classList.remove('playing');
+						btn.innerHTML = '<i class="fas fa-play"></i>';
+						cancelAnimationFrame(rafId);
+					} else {
+						if (activeAudio && activeAudio !== a) stopAll();
+						a.play();
+						btn.classList.add('playing');
+						btn.innerHTML = '<i class="fas fa-pause"></i>';
+						activeAudio = a; activeBtn = btn; activeFill = fill; activeTimeEl = curEl;
+						rafId = requestAnimationFrame(() => tick(a, fill, curEl));
+					}
+				});
+
+				track.addEventListener('click', (e) => {
+					const a = getAudio();
+					if (!a.duration) return;
+					const rect = track.getBoundingClientRect();
+					a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration;
+					fill.style.width = (a.currentTime / a.duration * 100) + '%';
+					curEl.textContent = fmt(a.currentTime);
+				});
+
+				volBtn.addEventListener('click', () => {
+					const a = getAudio();
+					muted = !muted;
+					a.muted = muted;
+					volBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+				});
+
+				container.appendChild(card);
+			});
 		</script>
 	</body>
 </html>
-
