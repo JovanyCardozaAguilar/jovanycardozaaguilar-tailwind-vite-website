@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<link rel="icon" type="image/svg+xml" href="/crazy_rainbow_favicon.svg">
+		<title>FUN ZONE</title>
+		<style>
+			nav a {
+				color: #000000;
+				text-decoration: none;
+			}
+			nav a:hover {
+				color: black !important;
+			}
+			.article-card:hover {
+				background-color: #86efac; /* green-300 */
+				transition: background-color 200ms;
+			}
+			.article-card-ready {
+				transition: background-color 200ms;
+			}
+
+			* { box-sizing: border-box; }
+
+			.lesson-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.lesson-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.lesson-header {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.lesson-number {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #fcc019;
+				border: 2px solid black;
+				padding: 3px 12px;
+				white-space: nowrap;
+				font-family: 'Courier New', monospace;
+			}
+			.lesson-title {
+				font-size: 15px;
+				font-weight: 700;
+				color: black;
+				letter-spacing: 0.02em;
+				font-family: 'Courier New', monospace;
+			}
+			.player {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: white;
+				border: 2px solid black;
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.play-btn-wrap {
+				position: relative;
+				display: inline-block;
+				flex-shrink: 0;
+			}
+			.play-btn-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: black;
+				transform: translate(3px, 3px);
+				border-radius: 6px;
+				z-index: -1;
+			}
+			.play-toggle {
+				position: relative;
+				width: 36px;
+				height: 36px;
+				background: #86efac;
+				border: 2px solid black;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 13px;
+				color: black;
+				transition: transform 0.1s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.play-toggle:hover { transform: translate(-1px, -1px); }
+			.play-toggle:active { transform: translate(2px, 2px); }
+			.play-toggle.playing { background: #fcc019; }
+			.progress-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.progress-track {
+				width: 100%;
+				height: 8px;
+				background: #e5e5e5;
+				border: 1.5px solid black;
+				border-radius: 4px;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			.progress-fill {
+				height: 100%;
+				background: #fcc019;
+				border-radius: 4px;
+				width: 0%;
+				pointer-events: none;
+			}
+			.time-row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 10px;
+				font-weight: 700;
+				color: #666;
+				letter-spacing: 0.05em;
+				font-family: 'Courier New', monospace;
+			}
+			.volume-btn {
+				flex-shrink: 0;
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 14px;
+				color: #444;
+				padding: 4px;
+				transition: color 0.1s;
+			}
+			.volume-btn:hover { color: black; }
+			.pdf-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.pdf-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.pdf-card a {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				padding: 20px 24px;
+				text-decoration: none;
+				color: black;
+			}
+			.pdf-icon { font-size: 22px; color: black; flex-shrink: 0; }
+			.pdf-title { font-size: 15px; font-weight: 700; font-family: 'Courier New', monospace; }
+			.pdf-cta { font-size: 12px; color: #555; margin-top: 3px; font-family: 'Courier New', monospace; }
+			.missing-card {
+				background: #f0f0f0;
+				border: 3px dashed #999;
+				border-radius: 12px;
+				padding: 14px 24px;
+				margin-bottom: 24px;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				color: #666;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+		</style>
+	</head>
+	<body style="overflow: auto;" class="bg-[#d698fa]">
+		<div id="app">
+			<div>
+				<header class="fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
+					<nav class="
+						    grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
+						    md:gap-x-1 px-0 lg:px-4 
+						    relative
+						    ">
+						<div></div>
+						<!-- Page Links -->
+						<div class="hidden sm:flex gap-x-2 lg:gap-x-3">
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="../fun/spanish.html">Back</a>
+							</div>
+						</div>
+					</nav>
+
+					<!-- Mobile Nav Bar -->
+					<nav class="sm:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+						<div class="bg-[#fcc019] flex justify-around bg-neo-yellow border-4 border-black shadow-[8px_8px_0_#000] max-w-sm mx-auto px-2 py-2">
+							<!-- Home -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs 
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="../fun/spanish.html">Back</a>
+							</div>
+						</div>
+					</nav>
+				</header>
+				<main class="pt-32 md:pt-24 container mx-auto px-4">
+					<div class="space-y-6">
+						<h1 class="text-3xl font-mono font-bold mb-8">Spanish Pimsleur I</h1>
+						<div id="lessons"></div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+		<script>
+			window.addEventListener('load', () => {
+				document.querySelectorAll('.article-card').forEach(el => {
+					el.classList.add('article-card-ready');
+				});
+			});
+
+			const container = document.getElementById('lessons');
+			let activeAudio = null, activeBtn = null, activeFill = null, activeTimeEl = null, rafId = null;
+
+			function fmt(s) {
+				if (isNaN(s) || !isFinite(s)) return '0:00';
+				const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+				return `${m}:${sec.toString().padStart(2, '0')}`;
+			}
+
+			function stopAll() {
+				if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; }
+				if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+				if (activeFill) activeFill.style.width = '0%';
+				if (activeTimeEl) activeTimeEl.textContent = '0:00';
+				cancelAnimationFrame(rafId);
+				activeAudio = activeBtn = activeFill = activeTimeEl = null;
+			}
+
+			function tick(audio, fill, timeEl) {
+				if (!audio.paused) {
+					fill.style.width = (audio.duration ? (audio.currentTime / audio.duration) * 100 : 0) + '%';
+					timeEl.textContent = fmt(audio.currentTime);
+					rafId = requestAnimationFrame(() => tick(audio, fill, timeEl));
+				}
+			}
+
+			function addPdfCard(href, title) {
+				const card = document.createElement('div');
+				card.className = 'pdf-card';
+				card.innerHTML = `<a href="${href}" target="_blank"><span class="pdf-icon"><i class="fas fa-file-pdf"></i></span><div><div class="pdf-title">${title}</div><div class="pdf-cta">Open PDF →</div></div></a>`;
+				container.appendChild(card);
+			}
+
+			function addMissingCard(text) {
+				const card = document.createElement('div');
+				card.className = 'missing-card';
+				card.textContent = text;
+				container.appendChild(card);
+			}
+
+			function addLessonCard(label, title, src) {
+				const card = document.createElement('div');
+				card.className = 'lesson-card';
+				card.innerHTML = `
+					<div class="lesson-header">
+						<span class="lesson-number">${label}</span>
+						<span class="lesson-title">${title}</span>
+					</div>
+					<div class="player">
+						<div class="play-btn-wrap">
+							<button class="play-toggle" aria-label="Play ${title}"><i class="fas fa-play"></i></button>
+						</div>
+						<div class="progress-area">
+							<div class="progress-track"><div class="progress-fill"></div></div>
+							<div class="time-row"><span class="current-time">0:00</span><span class="duration">--:--</span></div>
+						</div>
+						<button class="volume-btn" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+					</div>`;
+
+				const btn = card.querySelector('.play-toggle');
+				const fill = card.querySelector('.progress-fill');
+				const track = card.querySelector('.progress-track');
+				const curEl = card.querySelector('.current-time');
+				const durEl = card.querySelector('.duration');
+				const volBtn = card.querySelector('.volume-btn');
+				let audio = null, muted = false;
+
+				function getAudio() {
+					if (audio) return audio;
+					audio = new Audio(src);
+					audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+					audio.addEventListener('ended', () => {
+						btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>';
+						fill.style.width = '0%'; curEl.textContent = '0:00'; cancelAnimationFrame(rafId);
+					});
+					return audio;
+				}
+
+				btn.addEventListener('click', () => {
+					const a = getAudio();
+					if (!a.paused) {
+						a.pause(); btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>'; cancelAnimationFrame(rafId);
+					} else {
+						if (activeAudio && activeAudio !== a) stopAll();
+						a.play(); btn.classList.add('playing'); btn.innerHTML = '<i class="fas fa-pause"></i>';
+						activeAudio = a; activeBtn = btn; activeFill = fill; activeTimeEl = curEl;
+						rafId = requestAnimationFrame(() => tick(a, fill, curEl));
+					}
+				});
+
+				track.addEventListener('click', (e) => {
+					const a = getAudio();
+					if (!a.duration) return;
+					const rect = track.getBoundingClientRect();
+					a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration;
+					fill.style.width = (a.currentTime / a.duration * 100) + '%';
+					curEl.textContent = fmt(a.currentTime);
+				});
+
+				volBtn.addEventListener('click', () => {
+					const a = getAudio(); muted = !muted; a.muted = muted;
+					volBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+				});
+
+				container.appendChild(card);
+			}
+
+			// ── Build page ────────────────────────────────────────────────────────────
+			addPdfCard('/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading.pdf', 'Spanish Pimsleur 1 Reading & Guide');
+			addLessonCard('01', 'Lesson 1'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 01.mp3');
+			addLessonCard('02', 'Lesson 2'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 02.mp3');
+			addLessonCard('03', 'Lesson 3'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 03.mp3');
+			addLessonCard('04', 'Lesson 4'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 04.mp3');
+			addLessonCard('05', 'Lesson 5'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 05.mp3');
+			addLessonCard('06', 'Lesson 6'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 06.mp3');
+			addLessonCard('07', 'Lesson 7'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 07.mp3');
+			addLessonCard('08', 'Lesson 8'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 08.mp3');
+			addLessonCard('09', 'Lesson 9'  , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 09.mp3');
+			addLessonCard('10', 'Lesson 10' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 10.mp3');
+			addLessonCard('11', 'Lesson 11' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 11.mp3');
+			addLessonCard('12', 'Lesson 12' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 12.mp3');
+			addLessonCard('13', 'Lesson 13' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 13.mp3');
+			addLessonCard('14', 'Lesson 14' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 14.mp3');
+			addLessonCard('15', 'Lesson 15' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 15.mp3');
+			addLessonCard('16', 'Lesson 16' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 16.mp3');
+			addLessonCard('17', 'Lesson 17' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 17.mp3');
+			addLessonCard('18', 'Lesson 18' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 18.mp3');
+			addLessonCard('19', 'Lesson 19' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 19.mp3');
+			addLessonCard('20', 'Lesson 20' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 20.mp3');
+			addLessonCard('21', 'Lesson 21' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 21.mp3');
+			addLessonCard('22', 'Lesson 22' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 22.mp3');
+			addLessonCard('23', 'Lesson 23' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 23.mp3');
+			addLessonCard('24', 'Lesson 24' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 24.mp3');
+			addLessonCard('25', 'Lesson 25' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 25.mp3');
+			addLessonCard('26', 'Lesson 26' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 26.mp3');
+			addLessonCard('27', 'Lesson 27' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 27.mp3');
+			addLessonCard('28', 'Lesson 28' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 28.mp3');
+			addLessonCard('29', 'Lesson 29' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 29.mp3');
+			addLessonCard('30', 'Lesson 30' , '/spanish/pimsleur/Pimsleur-Spanish I/Spanish I - Unit 30.mp3');
+
+			// ── Readings section ──────────────────────────────────────────────
+			const readingsHeader = document.createElement('div');
+			readingsHeader.innerHTML = '<h2 class="text-2xl font-mono font-bold mt-8 mb-4">Reading Lessons</h2>';
+			container.appendChild(readingsHeader);
+
+			addLessonCard('01R', 'Reading 1' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 01.mp3');
+			addLessonCard('02R', 'Reading 2' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 02.mp3');
+			addLessonCard('03R', 'Reading 3' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 03.mp3');
+			addLessonCard('04R', 'Reading 4' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 04.mp3');
+			addLessonCard('05R', 'Reading 5' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 05.mp3');
+			addLessonCard('06R', 'Reading 6' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 06.mp3');
+			addLessonCard('07R', 'Reading 7' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 07.mp3');
+			addLessonCard('08R', 'Reading 8' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 08.mp3');
+			addLessonCard('09R', 'Reading 9' , '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 09.mp3');
+			addLessonCard('10R', 'Reading 10', '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 10.mp3');
+			addLessonCard('11R', 'Reading 11', '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 11.mp3');
+			addLessonCard('12R', 'Reading 12', '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 12.mp3');
+			addLessonCard('13R', 'Reading 13', '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 13.mp3');
+			addLessonCard('14R', 'Reading 14', '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 14.mp3');
+			addLessonCard('15R', 'Reading 15', '/spanish/pimsleur/Pimsleur-Spanish I/Reading Lessons/Spanish I - Reading 15.mp3');
+		</script>
+	</body>
+</html>
