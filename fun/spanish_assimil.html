@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<link rel="icon" type="image/svg+xml" href="/crazy_rainbow_favicon.svg">
+		<title>FUN ZONE</title>
+		<style>
+			nav a {
+				color: #000000;
+				text-decoration: none;
+			}
+			nav a:hover {
+				color: black !important;
+			}
+			.article-card:hover {
+				background-color: #86efac;
+				transition: background-color 200ms;
+			}
+			.article-card-ready {
+				transition: background-color 200ms;
+			}
+
+			* { box-sizing: border-box; }
+
+			.lesson-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.lesson-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.lesson-header {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.lesson-number {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #fcc019;
+				border: 2px solid black;
+				padding: 3px 12px;
+				white-space: nowrap;
+				font-family: 'Courier New', monospace;
+			}
+			.lesson-title {
+				font-size: 15px;
+				font-weight: 700;
+				color: black;
+				letter-spacing: 0.02em;
+				font-family: 'Courier New', monospace;
+			}
+			.player {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: white;
+				border: 2px solid black;
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.play-btn-wrap {
+				position: relative;
+				display: inline-block;
+				flex-shrink: 0;
+			}
+			.play-btn-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: black;
+				transform: translate(3px, 3px);
+				border-radius: 6px;
+				z-index: -1;
+			}
+			.play-toggle {
+				position: relative;
+				width: 36px;
+				height: 36px;
+				background: #86efac;
+				border: 2px solid black;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 13px;
+				color: black;
+				transition: transform 0.1s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.play-toggle:hover { transform: translate(-1px, -1px); }
+			.play-toggle:active { transform: translate(2px, 2px); }
+			.play-toggle.playing { background: #fcc019; }
+			.progress-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.progress-track {
+				width: 100%;
+				height: 8px;
+				background: #e5e5e5;
+				border: 1.5px solid black;
+				border-radius: 4px;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			.progress-fill {
+				height: 100%;
+				background: #fcc019;
+				border-radius: 4px;
+				width: 0%;
+				pointer-events: none;
+			}
+			.time-row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 10px;
+				font-weight: 700;
+				color: #666;
+				letter-spacing: 0.05em;
+				font-family: 'Courier New', monospace;
+			}
+			.volume-btn {
+				flex-shrink: 0;
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 14px;
+				color: #444;
+				padding: 4px;
+				transition: color 0.1s;
+			}
+			.volume-btn:hover { color: black; }
+			.pdf-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				margin-bottom: 24px;
+				transition: transform 0.1s, box-shadow 0.1s;
+			}
+			.pdf-card:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0px black;
+			}
+			.pdf-card a {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				padding: 20px 24px;
+				text-decoration: none;
+				color: black;
+			}
+			.pdf-icon { font-size: 22px; color: black; flex-shrink: 0; }
+			.pdf-title { font-size: 15px; font-weight: 700; font-family: 'Courier New', monospace; }
+			.pdf-cta { font-size: 12px; color: #555; margin-top: 3px; font-family: 'Courier New', monospace; }
+			.strategy-card {
+				position: relative;
+				background: #FFF8E7;
+				border: 3px solid black;
+				border-radius: 12px;
+				box-shadow: 5px 5px 0px black;
+				padding: 22px 24px 24px;
+				margin-bottom: 24px;
+			}
+			.strategy-title {
+				font-size: 15px;
+				font-weight: 700;
+				font-family: 'Courier New', monospace;
+				margin-bottom: 14px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.strategy-badge {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				background: #86efac;
+				border: 2px solid black;
+				padding: 3px 12px;
+				font-family: 'Courier New', monospace;
+			}
+			.strategy-steps {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.strategy-steps li {
+				display: flex;
+				gap: 12px;
+				align-items: baseline;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				color: #222;
+				line-height: 1.5;
+			}
+			.step-num {
+				font-size: 10px;
+				font-weight: 700;
+				background: black;
+				color: white;
+				padding: 2px 7px;
+				flex-shrink: 0;
+				font-family: 'Courier New', monospace;
+			}
+			.missing-card {
+				background: #f0f0f0;
+				border: 3px dashed #999;
+				border-radius: 12px;
+				padding: 14px 24px;
+				margin-bottom: 24px;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				color: #666;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+		</style>
+	</head>
+	<body style="overflow: auto;" class="bg-[#d698fa]">
+		<div id="app">
+			<div>
+				<header class="z-232 fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
+					<nav class="
+						    grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
+						    md:gap-x-1 px-0 lg:px-4 
+						    relative
+						    ">
+						<div></div>
+						<!-- Page Links -->
+						<div class="hidden sm:flex gap-x-2 lg:gap-x-3">
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="../fun/spanish.html">Back</a>
+							</div>
+						</div>
+					</nav>
+
+					<!-- Mobile Nav Bar -->
+					<nav class="sm:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+						<div class="bg-[#fcc019] flex justify-around bg-neo-yellow border-4 border-black shadow-[8px_8px_0_#000] max-w-sm mx-auto px-2 py-2">
+							<!-- Home -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs 
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="../fun/spanish.html">Back</a>
+							</div>
+						</div>
+					</nav>
+				</header>
+				<main class="pt-32 md:pt-24 container mx-auto px-4">
+					<div class="space-y-6">
+						<h1 class="text-3xl font-mono font-bold mb-8">Spanish Assimil</h1>
+						<div id="lessons"></div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+		<script>
+			window.addEventListener('load', () => {
+				document.querySelectorAll('.article-card').forEach(el => {
+					el.classList.add('article-card-ready');
+				});
+			});
+
+			const container = document.getElementById('lessons');
+			let activeAudio = null, activeBtn = null, activeFill = null, activeTimeEl = null, rafId = null;
+
+			function fmt(s) {
+				if (isNaN(s) || !isFinite(s)) return '0:00';
+				const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+				return `${m}:${sec.toString().padStart(2, '0')}`;
+			}
+
+			function stopAll() {
+				if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; }
+				if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+				if (activeFill) activeFill.style.width = '0%';
+				if (activeTimeEl) activeTimeEl.textContent = '0:00';
+				cancelAnimationFrame(rafId);
+				activeAudio = activeBtn = activeFill = activeTimeEl = null;
+			}
+
+			function tick(audio, fill, timeEl) {
+				if (!audio.paused) {
+					fill.style.width = (audio.duration ? (audio.currentTime / audio.duration) * 100 : 0) + '%';
+					timeEl.textContent = fmt(audio.currentTime);
+					rafId = requestAnimationFrame(() => tick(audio, fill, timeEl));
+				}
+			}
+
+			function addPdfCard(href, title) {
+				const card = document.createElement('div');
+				card.className = 'pdf-card';
+				card.innerHTML = `<a href="${href}" target="_blank"><span class="pdf-icon"><i class="fas fa-file-pdf"></i></span><div><div class="pdf-title">${title}</div><div class="pdf-cta">Open PDF →</div></div></a>`;
+				container.appendChild(card);
+			}
+
+			function addStrategyCard() {
+				const card = document.createElement('div');
+				card.className = 'strategy-card';
+				card.innerHTML = `
+					<div class="strategy-title"><span class="strategy-badge">Strategy</span> Assimil Method</div>
+					<ol class="strategy-steps">
+						<li><span class="step-num">1</span> Blind shadow audio ×2</li>
+						<li><span class="step-num">2</span> Shadow audio while looking at native language ×2</li>
+						<li><span class="step-num">3</span> Shadow audio while looking at target language ×3</li>
+						<li><span class="step-num">4</span> Read target language text</li>
+						<li><span class="step-num">5</span> Recall target language while looking at native language, without fail ×2</li>
+						<li><span class="step-num">6</span> Blind listen</li>
+						<li><span class="step-num">7</span> Go through notes</li>
+						<li><span class="step-num">8</span> Go through exercises</li>
+						<li><span class="step-num">9</span> Blind listen</li>
+					</ol>`;
+				container.appendChild(card);
+			}
+
+			function addMissingCard(text) {
+				const card = document.createElement('div');
+				card.className = 'missing-card';
+				card.textContent = text;
+				container.appendChild(card);
+			}
+
+			function addLessonCard(label, title, src) {
+				const card = document.createElement('div');
+				card.className = 'lesson-card';
+				card.innerHTML = `
+					<div class="lesson-header">
+						<span class="lesson-number">${label}</span>
+						<span class="lesson-title">${title}</span>
+					</div>
+					<div class="player">
+						<div class="play-btn-wrap">
+							<button class="play-toggle" aria-label="Play ${title}"><i class="fas fa-play"></i></button>
+						</div>
+						<div class="progress-area">
+							<div class="progress-track"><div class="progress-fill"></div></div>
+							<div class="time-row"><span class="current-time">0:00</span><span class="duration">--:--</span></div>
+						</div>
+						<button class="volume-btn" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+					</div>`;
+
+				const btn = card.querySelector('.play-toggle');
+				const fill = card.querySelector('.progress-fill');
+				const track = card.querySelector('.progress-track');
+				const curEl = card.querySelector('.current-time');
+				const durEl = card.querySelector('.duration');
+				const volBtn = card.querySelector('.volume-btn');
+				let audio = null, muted = false;
+
+				function getAudio() {
+					if (audio) return audio;
+					audio = new Audio(src);
+					audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+					audio.addEventListener('ended', () => {
+						btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>';
+						fill.style.width = '0%'; curEl.textContent = '0:00'; cancelAnimationFrame(rafId);
+					});
+					return audio;
+				}
+
+				btn.addEventListener('click', () => {
+					const a = getAudio();
+					if (!a.paused) {
+						a.pause(); btn.classList.remove('playing'); btn.innerHTML = '<i class="fas fa-play"></i>'; cancelAnimationFrame(rafId);
+					} else {
+						if (activeAudio && activeAudio !== a) stopAll();
+						a.play(); btn.classList.add('playing'); btn.innerHTML = '<i class="fas fa-pause"></i>';
+						activeAudio = a; activeBtn = btn; activeFill = fill; activeTimeEl = curEl;
+						rafId = requestAnimationFrame(() => tick(a, fill, curEl));
+					}
+				});
+
+				track.addEventListener('click', (e) => {
+					const a = getAudio();
+					if (!a.duration) return;
+					const rect = track.getBoundingClientRect();
+					a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration;
+					fill.style.width = (a.currentTime / a.duration * 100) + '%';
+					curEl.textContent = fmt(a.currentTime);
+				});
+
+				volBtn.addEventListener('click', () => {
+					const a = getAudio(); muted = !muted; a.muted = muted;
+					volBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+				});
+
+				container.appendChild(card);
+			}
+
+			// ── Build page ────────────────────────────────────────────────────────────
+			addPdfCard('/spanish/assimil/Assimil Spanish With Ease_compressed.pdf', 'Spanish Assimil Book');
+			addStrategyCard();
+			addLessonCard('01' , 'Lesson 1'   , "/spanish/assimil/Audio/001 - Un encuentro.mp3");
+			addLessonCard('02' , 'Lesson 2'   , "/spanish/assimil/Audio/002 - Lección segunda.mp3");
+			addLessonCard('03' , 'Lesson 3'   , "/spanish/assimil/Audio/003 - Qué tal está.mp3");
+			addLessonCard('04' , 'Lesson 4'   , "/spanish/assimil/Audio/004 - Masculino y femenino.mp3");
+			addLessonCard('05' , 'Lesson 5'   , "/spanish/assimil/Audio/005 - Antes del viaje.mp3");
+			addLessonCard('06' , 'Lesson 6'   , "/spanish/assimil/Audio/006 - Tener - Haber.mp3");
+			addLessonCard('07' , 'Lesson 7'   , "/spanish/assimil/Audio/007 - Revisión y notas.mp3");
+			addLessonCard('08' , 'Lesson 8'   , "/spanish/assimil/Audio/008 - Por favor. Puede indicarme....mp3");
+			addLessonCard('09' , 'Lesson 9'   , "/spanish/assimil/Audio/009 - La hora.mp3");
+			addLessonCard('10' , 'Lesson 10'  , "/spanish/assimil/Audio/010 - Ser - Estar.mp3");
+			addLessonCard('11' , 'Lesson 11'  , "/spanish/assimil/Audio/011 - Quiero hablar castellano.mp3");
+			addLessonCard('12' , 'Lesson 12'  , "/spanish/assimil/Audio/012 - Entre vecinos.mp3");
+			addLessonCard('13' , 'Lesson 13'  , "/spanish/assimil/Audio/013 - Un poco de todo.mp3");
+			addLessonCard('14' , 'Lesson 14'  , "/spanish/assimil/Audio/014 - Revisión y notas.mp3");
+			addLessonCard('15' , 'Lesson 15'  , "/spanish/assimil/Audio/015 - Voy al mercado.mp3");
+			addLessonCard('16' , 'Lesson 16'  , "/spanish/assimil/Audio/016 - El imperativo y el pronombre.mp3");
+			addLessonCard('17' , 'Lesson 17'  , "/spanish/assimil/Audio/017 - Yo soñaba....mp3");
+			addLessonCard('18' , 'Lesson 18'  , "/spanish/assimil/Audio/018 - Los otros pronombres personales.mp3");
+			addLessonCard('19' , 'Lesson 19'  , "/spanish/assimil/Audio/019 - Por teléfono.mp3");
+			addLessonCard('20' , 'Lesson 20'  , "/spanish/assimil/Audio/020 - Una buena noticia.mp3");
+			addLessonCard('21' , 'Lesson 21'  , "/spanish/assimil/Audio/021 - Revisión y notas.mp3");
+			addLessonCard('22' , 'Lesson 22'  , "/spanish/assimil/Audio/022 - Se bañaron.mp3");
+			addLessonCard('23' , 'Lesson 23'  , "/spanish/assimil/Audio/023 - Vamos a su casa o pequeños detalles.mp3");
+			addLessonCard('24' , 'Lesson 24'  , "/spanish/assimil/Audio/024 - Antes de comer.mp3");
+			addLessonCard('25' , 'Lesson 25'  , "/spanish/assimil/Audio/025 - Me gusta el castellano.mp3");
+			addLessonCard('26' , 'Lesson 26'  , "/spanish/assimil/Audio/026 - Un regalo.mp3");
+			addLessonCard('27' , 'Lesson 27'  , "/spanish/assimil/Audio/027 - Mañana iremos de campo.mp3");
+			addLessonCard('28' , 'Lesson 28'  , "/spanish/assimil/Audio/028 - Revisión y notas.mp3");
+			addLessonCard('29' , 'Lesson 29'  , "/spanish/assimil/Audio/029 - Calado hasta los huesos.mp3");
+			addLessonCard('30' , 'Lesson 30'  , "/spanish/assimil/Audio/030 - Hacer su casa.mp3");
+			addLessonCard('31' , 'Lesson 31'  , "/spanish/assimil/Audio/031 - Las cuatro estaciones.mp3");
+			addLessonCard('32' , 'Lesson 32'  , "/spanish/assimil/Audio/032 - Los puntos cardinales.mp3");
+			addLessonCard('33' , 'Lesson 33'  , "/spanish/assimil/Audio/033 - Un año.mp3");
+			addLessonCard('34' , 'Lesson 34'  , "/spanish/assimil/Audio/034 - El color.mp3");
+			addLessonCard('35' , 'Lesson 35'  , "/spanish/assimil/Audio/035 - Revisión y notas.mp3");
+			addLessonCard('36' , 'Lesson 36'  , "/spanish/assimil/Audio/036 - Después del viaje.mp3");
+			addLessonCard('37' , 'Lesson 37'  , "/spanish/assimil/Audio/037 - Voy a poner la mesa.mp3");
+			addLessonCard('38' , 'Lesson 38'  , "/spanish/assimil/Audio/038 - En el mercado.mp3");
+			addLessonCard('39' , 'Lesson 39'  , "/spanish/assimil/Audio/039 - Vestirse.mp3");
+			addLessonCard('40' , 'Lesson 40'  , "/spanish/assimil/Audio/040 - La televisión.mp3");
+			addLessonCard('41' , 'Lesson 41'  , "/spanish/assimil/Audio/041 - Una carta.mp3");
+			addLessonCard('42' , 'Lesson 42'  , "/spanish/assimil/Audio/042 - Revisión y notas.mp3");
+			addLessonCard('43' , 'Lesson 43'  , "/spanish/assimil/Audio/043 - Esperamos a un amigo.mp3");
+			addLessonCard('44' , 'Lesson 44'  , "/spanish/assimil/Audio/044 - Saldos.mp3");
+			addLessonCard('45' , 'Lesson 45'  , "/spanish/assimil/Audio/045 - Un triste y banal fin.mp3");
+			addLessonCard('46' , 'Lesson 46'  , "/spanish/assimil/Audio/046 - La familia.mp3");
+			addLessonCard('47' , 'Lesson 47'  , "/spanish/assimil/Audio/047 - Cuestión de cartera.mp3");
+			addLessonCard('48' , 'Lesson 48'  , "/spanish/assimil/Audio/048 - Lo nuestro.mp3");
+			addLessonCard('49' , 'Lesson 49'  , "/spanish/assimil/Audio/049 - Revisión y notas.mp3");
+			addLessonCard('50' , 'Lesson 50'  , "/spanish/assimil/Audio/050 - Un largo fin de semana.mp3");
+			addLessonCard('51' , 'Lesson 51'  , "/spanish/assimil/Audio/051 - Un aspecto cultural.mp3");
+			addLessonCard('52' , 'Lesson 52'  , "/spanish/assimil/Audio/052 - Un aspecto cultural (continuación y fin).mp3");
+			addLessonCard('53' , 'Lesson 53'  , "/spanish/assimil/Audio/053 - En la carretera.mp3");
+			addLessonCard('54' , 'Lesson 54'  , "/spanish/assimil/Audio/054 - Una costumbre.mp3");
+			addLessonCard('55' , 'Lesson 55'  , "/spanish/assimil/Audio/055 - Medios de transporte.mp3");
+			addLessonCard('56' , 'Lesson 56'  , "/spanish/assimil/Audio/056 - Revisión y notas.mp3");
+			addLessonCard('57' , 'Lesson 57'  , "/spanish/assimil/Audio/057 - Antes de las vacaciones.mp3");
+			addLessonCard('58' , 'Lesson 58'  , "/spanish/assimil/Audio/058 - Bromeando.mp3");
+			addLessonCard('59' , 'Lesson 59'  , "/spanish/assimil/Audio/059 - Un nuevo programa de radio.mp3");
+			addLessonCard('60' , 'Lesson 60'  , "/spanish/assimil/Audio/060 - La calefacción.mp3");
+			addLessonCard('61' , 'Lesson 61'  , "/spanish/assimil/Audio/061 - Una sorpresa.mp3");
+			addLessonCard('62' , 'Lesson 62'  , "/spanish/assimil/Audio/062 - Rubio y moreno.mp3");
+			addLessonCard('63' , 'Lesson 63'  , "/spanish/assimil/Audio/063 - Revisión y notas.mp3");
+			addLessonCard('64' , 'Lesson 64'  , "/spanish/assimil/Audio/064 - Baldomero tiene problemas.mp3");
+			addLessonCard('65' , 'Lesson 65'  , "/spanish/assimil/Audio/065 - Volverán.mp3");
+			addLessonCard('66' , 'Lesson 66'  , "/spanish/assimil/Audio/066 - En Norreos.mp3");
+			addLessonCard('67' , 'Lesson 67'  , "/spanish/assimil/Audio/067 - Presente de subjuntivo.mp3");
+			addLessonCard('68' , 'Lesson 68'  , "/spanish/assimil/Audio/068 - Ferias y fiestas.mp3");
+			addLessonCard('69' , 'Lesson 69'  , "/spanish/assimil/Audio/069 - ''Falsos amigos''.mp3");
+			addLessonCard('70' , 'Lesson 70'  , "/spanish/assimil/Audio/070 - Revisión y notas.mp3");
+			addLessonCard('71' , 'Lesson 71'  , "/spanish/assimil/Audio/071 - Baldomera va al psicoanalista.mp3");
+			addLessonCard('72' , 'Lesson 72'  , "/spanish/assimil/Audio/072 - Suicido - Asesinato - O, las palabras, esos monstruos.mp3");
+			addLessonCard('73' , 'Lesson 73'  , "/spanish/assimil/Audio/073 - Qué nos aconseja.mp3");
+			addLessonCard('74' , 'Lesson 74'  , "/spanish/assimil/Audio/074 - Los Reyes Magos.mp3");
+			addLessonCard('75' , 'Lesson 75'  , "/spanish/assimil/Audio/075 - Favores entre amigos.mp3");
+			addLessonCard('76' , 'Lesson 76'  , "/spanish/assimil/Audio/076 - El participio.mp3");
+			addLessonCard('77' , 'Lesson 77'  , "/spanish/assimil/Audio/077 - Revisión y notas.mp3");
+			addLessonCard('78' , 'Lesson 78'  , "/spanish/assimil/Audio/078 - Quien manda, manda.mp3");
+			addLessonCard('79' , 'Lesson 79'  , "/spanish/assimil/Audio/079 - No molesten.mp3");
+			addLessonCard('80' , 'Lesson 80'  , "/spanish/assimil/Audio/080 - Dulce pereza.mp3");
+			addLessonCard('81' , 'Lesson 81'  , "/spanish/assimil/Audio/081 - Por amor al arte.mp3");
+			addLessonCard('82' , 'Lesson 82'  , "/spanish/assimil/Audio/082 - Una cierta cultura (continuación de la lección 81).mp3");
+			addLessonCard('83' , 'Lesson 83'  , "/spanish/assimil/Audio/083 - Cría cuervos....mp3");
+			addLessonCard('84' , 'Lesson 84'  , "/spanish/assimil/Audio/084 - Revisión y notas.mp3");
+			addLessonCard('85' , 'Lesson 85'  , "/spanish/assimil/Audio/085 - Novedad.mp3");
+			addLessonCard('86' , 'Lesson 86'  , "/spanish/assimil/Audio/086 - La sopa de ajo.mp3");
+			addLessonCard('87' , 'Lesson 87'  , "/spanish/assimil/Audio/087 - Advertencia por adelantado.mp3");
+			addLessonCard('88' , 'Lesson 88'  , "/spanish/assimil/Audio/088 - Baldomero pide disculpas por carta.mp3");
+			addLessonCard('89' , 'Lesson 89'  , "/spanish/assimil/Audio/089 - Hagan juego.mp3");
+			addLessonCard('90' , 'Lesson 90'  , "/spanish/assimil/Audio/090 - Recuerdos.mp3");
+			addLessonCard('91' , 'Lesson 91'  , "/spanish/assimil/Audio/091 - Revisión y notas.mp3");
+			addLessonCard('92' , 'Lesson 92'  , "/spanish/assimil/Audio/092 - Turismo y viaje de estudios.mp3");
+			addLessonCard('93' , 'Lesson 93'  , "/spanish/assimil/Audio/093 - Cuando la realidad sobrepasa la ficción.mp3");
+			addLessonCard('94' , 'Lesson 94'  , "/spanish/assimil/Audio/094 - Vamos al museo.mp3");
+			addLessonCard('95' , 'Lesson 95'  , "/spanish/assimil/Audio/095 - En la mesa, ante todo, buena educación.mp3");
+			addLessonCard('96' , 'Lesson 96'  , "/spanish/assimil/Audio/096 - Escándalo en casa de la condesa.mp3");
+			addLessonCard('97' , 'Lesson 97'  , "/spanish/assimil/Audio/097 - El progreso no se para.mp3");
+			addLessonCard('98' , 'Lesson 98'  , "/spanish/assimil/Audio/098 - Revisión y notas.mp3");
+			addLessonCard('99' , 'Lesson 99'  , "/spanish/assimil/Audio/099 - Verbos irregulares del tercer y cuarto grupo.mp3");
+			addLessonCard('100', 'Lesson 100' , "/spanish/assimil/Audio/100 - Sálvese quien pueda.mp3");
+			addLessonCard('101', 'Lesson 101' , "/spanish/assimil/Audio/101 - Escribir.mp3");
+			addLessonCard('102', 'Lesson 102' , "/spanish/assimil/Audio/102 - Verbos irregulares del quinto, sexto y séptimo grupo.mp3");
+			addLessonCard('103', 'Lesson 103' , "/spanish/assimil/Audio/103 - Precisiones.mp3");
+			addLessonCard('104', 'Lesson 104' , "/spanish/assimil/Audio/104 - Parábola.mp3");
+			addLessonCard('105', 'Lesson 105' , "/spanish/assimil/Audio/105 - Revisión y notas.mp3");
+			addLessonCard('106', 'Lesson 106' , "/spanish/assimil/Audio/106 - Ultimas advertencias.mp3");
+			addLessonCard('107', 'Lesson 107' , "/spanish/assimil/Audio/107 - El arte de saber distanciarse.mp3");
+			addLessonCard('108', 'Lesson 108' , "/spanish/assimil/Audio/108 - ''Vientos del pueblo me llevan''.mp3");
+			addLessonCard('109', 'Lesson 109' , "/spanish/assimil/Audio/109 - ''Proverbios y cantares''.mp3");
+		</script>
+	</body>
+</html>
