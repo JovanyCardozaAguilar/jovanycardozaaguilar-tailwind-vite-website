@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Checking...</title>
+	</head>
+	<body>
+		<script>
+			const answer = prompt('Please Enter Your Social Security Number:');
+			if (answer === '-1') {
+				sessionStorage.setItem('ssn_ok', '1');
+				window.location.replace('/fun/index.html');
+			} else {
+				window.location.replace('/');
+			}
+		</script>
+	</body>
+</html>
