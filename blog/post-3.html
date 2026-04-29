@@ -1,0 +1,1132 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<title>Jovany Cardoza-Aguilar - Explaining Negative Bond Yields</title>
+		<style>
+			nav a {
+				color: #000000;
+				text-decoration: none;
+			}
+			nav a:hover {
+				color: black !important;
+			}
+		</style>
+	</head>
+	<body style="overflow: auto;" class="bg-[#d698fa]">
+		<div id="app">
+			<div>
+				<header class="fixed w-full py-3 md:py-5 border-b-[3px] border-black bg-[#FDFDFD]">
+					<nav class="
+						grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center 
+						md:gap-x-1 px-0 lg:px-4 
+						relative
+						">
+						<!-- My Name -->
+						<a class="
+							  font-lexend 
+							  sm:text-xs sm:px-1
+							  md:text-md md:px-6 
+							  lg:px-2 lg:text-lg 
+							  xl:px-10 xl:text-2xl 
+							  font-bold uppercase 
+							  tracking-tight text-black 
+							  text-center sm:text-left 
+							  " href="/">
+							<span class="
+								inline-block hover:scale-110 transition-transform duration-200
+								">
+								Jovany Cardoza-Aguilar
+							</span>
+						</a>
+						<!-- Page Links -->
+						<div class="hidden sm:flex gap-x-2 lg:gap-x-3">
+							<!-- Home -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="/">Home</a>
+							</div>
+							<!-- Blog -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-orange-400 text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  translate-y-1 translate-x-1
+									  " href="../blog.html">Blog</a>
+							</div>
+							<!-- Portfolio -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="../portfolio.html">Portfolio</a>
+							</div>
+							<!-- Resume -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs md:text-sm lg:text-sm
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="resume.pdf" target="_blank">Resume</a>
+							</div>
+						</div>
+						<!-- Outside Links -->
+						<div class="hidden sm:flex justify-self-end px-14 gap-x-6">
+							<a href="https://github.com/jovanycardozaaguilar" target="_blank" class="
+								text-3xl
+								hover:scale-125 transition-transform duration-200
+								">
+								<i class="fab fa-github"></i>
+							</a>
+							<a href="https://linkedin.com/in/jovany-cardoza-aguilar" target="_blank" class="
+								 text-3xl
+								 hover:scale-125 transition-transform duration-200
+								">
+								<i class="fab fa-linkedin"></i>
+							</a>
+						</div>
+					</nav>
+
+					<!-- Mobile Nav Bar -->
+					<nav class="sm:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+						<div class="bg-[#fcc019] flex justify-around bg-neo-yellow border-4 border-black shadow-[8px_8px_0_#000] max-w-sm mx-auto px-2 py-2">
+							<!-- Home -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs 
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="/">Home</a>
+							</div>
+							<!-- Blog -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs
+									  bg-[#fea5d6] text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  translate-y-1 translate-x-1
+									  " href="../blog.html">Blog</a>
+							</div>
+							<!-- Portfolio -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs 
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="../portfolio.html">Portfolio</a>
+							</div>
+							<!-- Resume -->
+							<div class="relative inline-block group">
+								<div class="
+									    absolute inset-0 bg-black 
+									    translate-x-[3px] translate-y-[3px]
+									    "></div>
+								<a class="
+									  relative block font-public font-bold text-xs 
+									  bg-white text-black 
+									  uppercase tracking-wider px-3 py-1.5 border-2 border-black
+									  transition-transform duration-200 
+									  hover:-translate-y-0.5 hover:-translate-x-0.5 
+									  active:translate-y-1 active:translate-x-1
+									  " href="resume.pdf" target="_blank">Resume</a>
+							</div>
+						</div>
+					</nav>
+
+				</header>
+				<main class="pt-15 pb-25 md:pt-24 container mx-auto px-4">
+					<article class="article-card border-4 border-black rounded-lg bg-[#fefcff] shadow-[4px_4px_0_#000] px-4 py-4">
+						<h1 class="text-3xl font-mono font-bold mb-4">Explanation Of Voltage, Current, and Resistance</h1>
+						<p class="text-black leading-relaxed">
+						This blog post originally started as a planned series, where every week I would go through and summarize a section from the textbook “The Art of Electronics” as a means to learn about electronics.
+						<br>
+						As I began writing this week's summary on section 1.2, I wanted to explain parts that the textbook glossed over to make sure that I understood what was being written.
+						<br>
+						This caused the summary to become incredibly long, standing at over 3000 words.
+						<br>
+						<br>
+						The original title “A Summary of The Art of Electronics 1.2” no longer made sense, and I decided to make this into a general explanation of Voltage, Current, and Resistance.
+						<br>
+						I plan on continuing to work my way through a section of the textbook every couple weeks, and depending on the length of the section it may be a bit late, but I will try.
+						<br>
+						If you find any mistakes in my understanding, feel free to email me at jovanycardozaaguilar@gmail.com.
+						<br>
+						<br>
+						When working with electronic circuits we are mainly tracking two things, 
+						<br>
+						<strong>Voltage</strong> and <strong>Current</strong>.
+						<br>
+						<br>
+						<strong>Voltage</strong> (<strong>V</strong> or <strong>E</strong>) is measured in volt (<strong>V</strong>).
+						<br>
+						<strong>Voltage</strong> is defined as the difference in electrical potential between two points.
+						<br>
+						<br>
+						<em>Now, what does that even mean?</em>
+						<br>
+						Let's start with,
+						<br>
+						<em>What is meant by electrical potential?</em>
+						<br>
+						Electrical potential, as the name implies, is the potential energy of a point per unit charge.
+						<br>
+						<br>
+						<em>What is potential energy?</em>
+						<br>
+						An electrical charge will create electrical fields around themselves, exerting force on the area around them. 
+						<br>
+						This means either a charge needs to do work to move through another charge's field or a charge’s field will do work on another charge pushing/pulling them, depending on if they are the same or opposite charge.
+						<br>
+						(<strong>Note:</strong> “Work” is defined as the energy transferred to or from an object by a force acting over a distance. This means that when we talk about work, it is coming from a perspective of energy in a system, rather than just force alone)
+						<br>
+						<br>
+						<em>What is a unit of charge?</em>
+						<br>
+						A “unit of charge” is measured in <strong>coulombs</strong> (<strong>C</strong>), and is equal to the charge of 
+						<math>
+							<mn>6.24</mn><mo>*</mo>
+							<msup>
+								<mn>10</mn> 
+								<mn>18</mn> 
+							</msup>
+						</math>
+						electrons, or more usefully known as 1 <strong>ampere</strong> of current (we will define this later) for one second, and in-turn a current of one amp equaling a flow of one coulomb of charge per second.
+						<br>
+						<br>
+						The force between two charges is a combination of the strength of the two charge’s electrical fields and their distance from each other.
+						<br>
+						The equation for finding the force of two charges at a specific point in time is through Coulomb's law,
+						<br>
+						<math>
+						<mi>F</mi><mo>=</mo><mi>k</mi>
+						<mfrac>
+							<mrow>
+								<msub><mi>q</mi><mn>1</mn></msub>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+							<msup><mi>r</mi><mn>2</mn></msup>
+						</mfrac>
+						</math>
+						<br>
+						<strong>F</strong> is the force between the two charges, <strong>k</strong> is a universal constant of the strength of interaction between charged particles, 
+						<br>
+						<strong>q1</strong> and <strong>q2</strong> is the amount of charge for each particle, and <strong>r</strong> the distance between the charged particles.
+						<br>
+						<br>
+						This is <strong>NOT</strong> the potential energy between two points and does not give us the voltage, but it is a step on the way to finding the voltage.
+						<br>
+						This equation gives us the force for a static moment in time between two charges; to find the total potential energy between the two points, we need to know the force at every step of the way as the two points come closer together until they meet.
+						<br>
+						<br>
+						This seems like it would be a difficult problem and would take a lot of calculations,
+						<br>
+						<em>How can we calculate what is essentially an infinite amount of steps between two points?</em>
+						<br>
+						Well, if you remember what you studied in calculus, this should sound familiar.
+						<br>
+						We can use an integral!
+						<br>
+						All have to do is take Coulomb's law and integrate it,
+						<br>
+						<math>
+						<mi>U</mi>
+						</math>
+						(electrical potential energy)
+						<math>
+						<mo>=</mo><mo>∫</mo><mi>k</mi>
+						<mfrac>
+							<mrow>
+								<msub><mi>q</mi><mn>1</mn></msub>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+							<msup><mi>r</mi><mn>2</mn></msup>
+						</mfrac>
+						<mi>dr</mi><mo>=</mo><mi>k</mi><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>2</mn></msub><mo>∫</mo>
+						<mfrac>
+							<mn>1</mn>
+							<msup><mi>r</mi><mn>2</mn></msup>
+						</mfrac>
+						<mi>dr</mi><mo>=</mo><mi>k</mi><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>2</mn></msub><mo>(</mo><mo>-</mo>
+						<mfrac>
+							<mn>1</mn>
+							<mi>r</mi>
+						</mfrac>
+						<mo>)</mo><mo>=</mo><mo>-</mo><mi>k</mi>
+						<mfrac>
+							<mrow>
+								<msub><mi>q</mi><mn>1</mn></msub>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+							<mi>r</mi>
+						</mfrac>
+						</math>
+						<br>
+						The negative sign is typically dropped or added to the sign of the charges, either way the interaction between charges would be unchanged simply changing the math to have flipped signs, leaving us with the equation,
+						<br>
+						<math>
+						<mi>U</mi><mo>=</mo><mi>k</mi>
+						<mfrac>
+							<mrow>
+								<msub><mi>q</mi><mn>1</mn></msub>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+							<mi>r</mi>
+						</mfrac>
+						</math>
+						<br>
+						With this we can properly define a <strong>voltage</strong>.
+						<br>
+						<br>
+						First, let's imagine two points A and B.
+						<br>
+						We calculate what the electrical potential energy is for each point
+						<br>
+						<math>
+						<msub><mi>V</mi><mi>A</mi></msub><mo>=</mo>
+						<mfrac>
+							<mi>U</mi>
+							<msub><mi>q</mi><mn>2</mn></msub>
+						</mfrac>
+						</math>
+						where q2 is the test charge against point A to find its electrical potential energy,
+						<br>
+						<math>
+						<msub><mi>V</mi><mi>A</mi></msub><mo>=</mo><mi>k</mi>
+						<mfrac>
+							<mrow>
+								<msub><mi>q</mi><mi>A</mi></msub>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+							<mrow>
+								<mi>r</mi>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+						</mfrac>
+						<mo>=</mo><mi>k</mi>
+						<mfrac>
+							<msub><mi>q</mi><mi>A</mi></msub>
+							<mi>r</mi>
+						</mfrac>
+						</math>
+						and we do the same with point B,
+						<br>
+						<math>
+						<msub><mi>V</mi><mi>B</mi></msub><mo>=</mo><mi>k</mi>
+						<mfrac>
+							<mrow>
+								<msub><mi>q</mi><mi>B</mi></msub>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+							<mrow>
+								<mi>r</mi>
+								<msub><mi>q</mi><mn>2</mn></msub>
+							</mrow>
+						</mfrac>
+						<mo>=</mo><mi>k</mi>
+						<mfrac>
+							<msub><mi>q</mi><mi>B</mi></msub>
+							<mi>r</mi>
+						</mfrac>
+						</math>
+						<br>
+						Now that we have the electrical potential for both points we simply subtract them from each other to find the voltage,
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo><msub><mi>V</mi><mi>A</mi></msub><mo>-</mo><msub><mi>V</mi><mi>B</mi></msub>
+						</math>
+						<br>
+						(<strong>Note:</strong> Notice how the equation has opposite charges produce higher voltages and lower voltages if they are the same charge)
+						<br>
+						<br>
+						Now that we have defined a volt we can begin defining other terms.
+						<br>
+						A <strong>joule</strong> (<strong>J</strong>) is defined as the amount of work/energy used to move a <strong>coulomb</strong> across a potential difference of one <strong>volt</strong>.
+						<br>
+						<strong>Current</strong> (<strong>I</strong>) is the rate of flow of electrons measured in <strong>ampere</strong>/<strong>amp</strong> (<strong>A</strong>).
+						<br>
+						(<strong>Note:</strong> By convention, current in a circuit flows from positive to negative, even though actual electron flow is in the opposite direction)
+						<br>
+						<br>
+						As we can see from these definitions, current flows through a path, while voltage is the difference between two points and is not “flowing” through a path. 
+						<br>
+						<br>
+						We generate voltage by doing work on charges by converting some type of energy (electrochemical, mechanical energy, etc.) into a point so that its electrical potential energy increases. 
+						<br>
+						We then connect it to another point with lower electrical potential energy utilizing the voltage (electrical potential difference) to get the charge/current flowing.
+						<br>
+						<br>
+						Here are some useful rules to keep in mind for when dealing with circuits in series/parallel,
+						<br>
+						- Kirchhoff’s Current Law (KCL), the sum of the currents into a point in a circuit equals the sum of the currents out.
+						<br>
+						- Kirchhoff’s Voltage Law (KVL), the sum of the voltage drops around any closed circuit is zero.
+						<br>
+						<br>
+						A resistor is defined by its <strong>resistance</strong> (<strong>R</strong>) measured in <strong>ohms</strong> (<strong>Ω</strong>), described by Ohm’s Law,
+						<br>
+						<math>
+						<mi>R</mi><mo>=</mo>
+						<mfrac>
+							<mi>V</mi>
+							<mi>I</mi>
+						</mfrac>
+						</math>
+						<br>
+						A resistor restricts charge flow, along with absorbing and dissipating electrical energy as heat, lowering voltage across it.
+						<br>
+						This makes it useful for converting voltage to current,
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo>
+						<mfrac>
+							<mi>V</mi>
+							<mi>R</mi>
+						</mfrac>
+						</math>
+						<br>
+						and current to voltage,
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo><mi>I</mi><mi>R</mi>
+						</math>
+						<br>
+						(<strong>Note:</strong> Notice how they are all variations of Ohm’s law)
+						<br>
+						<br>
+						To find the amount of power dissipated by a resistor, we must first know the equation for the power dissipated by any device.
+						<br>
+						First, <strong>power</strong> (<strong>P</strong>), measured in <strong>watts</strong> for our purposes, is defined as the rate of work/energy transfer in <strong>joules</strong> (<strong>J</strong>) per unit of <strong>time</strong> (<strong>t</strong>) in seconds.
+						<br>
+						<math>
+						<mi>P</mi><mo>=</mo>
+						<mfrac>
+							<mi>W</mi>
+							<mi>t</mi>
+						</mfrac>
+						</math>
+						<br>
+						and earlier we defined volts as,
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo>
+						<mfrac>
+							<mi>U</mi>
+							<mi>q</mi>
+						</mfrac>
+						</math>
+						and since W and U both represent the same joules of energy, in different context we can define the equation as,
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo>
+						<mfrac>
+							<mi>W</mi>
+							<mi>q</mi>
+						</mfrac>
+						</math>
+						<br>
+						and as current is just the flow of charge per time we can define it as,
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo>
+						<mfrac>
+							<mi>q</mi>
+							<mi>t</mi>
+						</mfrac>
+						</math>
+						<br>
+						when we multiply the volt and current equation we get,
+						<br>
+						<math>
+						<mi>I</mi><mi>V</mi><mo>=</mo>
+						<mfrac>
+							<mi>q</mi>
+							<mi>t</mi>
+						</mfrac>
+						<mo>*</mo>
+						<mfrac>
+							<mi>W</mi>
+							<mi>q</mi>
+						</mfrac>
+						<mo>=</mo>
+						<mfrac>
+						<mrow><mi>q</mi><mi>W</mi></mrow>
+						<mrow><mi>t</mi><mi>q</mi></mrow>
+						</mfrac>
+						<mo>=</mo>
+						<mfrac>
+							<mi>W</mi>
+							<mi>t</mi>
+						</mfrac>
+						</math>
+						<br>
+						which is exactly the same as the power equation! That means we can write power as,
+						<br>
+						<math>
+							<mi>P</mi><mo>=</mo><mi>I</mi><mi>V</mi>
+						</math>
+						<br>
+						We can use this to find the amount of power dissipated from a resistor by plugin in Ohm’s law,
+						<br>
+						<math>
+						<mi>P</mi><mo>=</mo><mi>I</mi><mo> * </mo><mi>I</mi><mi>R</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi>
+						</math>
+						When you know the current, but not the voltage
+						<br>
+						<math>
+						<mi>P</mi><mo>=</mo>
+						<mfrac>
+							<mi>V</mi>
+							<mi>R</mi>
+						</mfrac>
+						<mo>*</mo><mi>V</mi><mo>=</mo>
+						<mfrac>
+							<msup><mi>V</mi><mn>2</mn></msup>
+							<mi>R</mi>
+						</mfrac>
+						</math>
+						When you know the voltage, but not the current
+						<br>
+						<math>
+						<mi>P</mi><mo>=</mo><mi>I</mi><mi>V</mi>
+						</math>
+						You can use it directly if you know both current and voltage, as current and voltage are dependent on the resistance.
+						<br>
+						<br>
+						When we put resistors <strong>in</strong> <strong>series</strong> (in a row), each successive resistor will further increase resistance.
+						<br>
+						This can be thought of, and equivalent to a single large resistor,
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo><msub><mi>V</mi><mn>1</mn></msub><mo>+</mo><msub><mi>V</mi><mn>2</mn></msub>
+						</math>
+						We use this equation as, by Kirchhoff’s Voltage Law, the dropped voltages from the resistors will sum to be the same as put into the system.
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo><msub><mi>V</mi><mn>1</mn></msub><mo>+</mo><msub><mi>V</mi><mn>2</mn></msub>
+						<mo>=</mo><mi>I</mi><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><mi>I</mi><msub><mi>R</mi><mn>2</mn></msub>
+						<mo>=</mo><mi>I</mi><mo>(</mo><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub><mo>)</mo>
+						<mo>=</mo><mi>I</mi><mi>R</mi>
+						</math>
+						meaning
+						<math>
+						<mi>R</mi><mo>=</mo><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub>
+						</math>
+						<br>
+						We are able to bring out the 
+						<math><mi>I</mi></math> 
+						for 
+						<math>
+						<msub><mi>R</mi><mn>1</mn></msub>
+						<msub><mi>I</mi><mn>1</mn></msub>
+						<mo>+</mo>
+						<msub><mi>R</mi><mn>2</mn></msub>
+						<msub><mi>I</mi><mn>2</mn></msub>
+						</math>
+						as Kirchhoff’s Current Law states that the sum of current into a point will be the same as the output, and as the circuit is in series the current will be the same for the whole circuit.
+						<br>
+						<br>
+						When we put resistors <strong>in parallel</strong> (side by side), we are creating more paths for the current to flow, even high resistance resistors will continue adding to the total current flow, as total current increases and voltage remains the same it follows by
+						<math>
+						<mi>I</mi><mo>=</mo>
+						<mfrac>
+							<mi>V</mi>
+							<mi>R</mi>
+						</mfrac>
+						</math>
+						that total resistance falls.
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo><msub><mi>I</mi><mn>1</mn></msub><mo>+</mo><msub><mi>I</mi><mn>2</mn></msub>
+						</math>
+						We use this equation as, by Kirchhoff’s Current Law, the current flowing in should sum up to be the same amount flowing out.
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo><msub><mi>I</mi><mn>1</mn></msub><mo>+</mo><msub><mi>I</mi><mn>2</mn></msub><mo>=</mo>
+						<mfrac>
+							<mi>V</mi>
+							<msub><mi>R</mi><mn>1</mn></msub>
+						</mfrac>
+						<mo>+</mo>
+						<mfrac>
+							<mi>V</mi>
+							<msub><mi>R</mi><mn>2</mn></msub>
+						</mfrac>
+						<mo>=</mo><mi>V</mi><mo>(</mo>
+						<mfrac>
+							<mn>1</mn>
+							<msub><mi>R</mi><mn>1</mn></msub>
+						</mfrac>
+						<mo>+</mo>
+						<mfrac>
+							<mn>1</mn>
+							<msub><mi>R</mi><mn>2</mn></msub>
+						</mfrac>
+						<mo>)</mo><mo>=</mo><mi>V</mi>
+						<mfrac>
+						<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						<mrow><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						We then move
+						<math>
+						<mfrac>
+						<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						<mrow><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						to the other side, solving for <math>V</math>
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo><mi>I</mi>
+						<mfrac>
+							<mn>1</mn>
+							<mfrac>
+								<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+								<mrow><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mrow>
+							</mfrac>
+						</mfrac>
+						<mo>=</mo>
+						<mi>I</mi>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mrow>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						<mo>=</mo><mi>I</mi><mi>R</mi>
+						</math>
+						meaning
+						<math>
+						<mi>R</mi><mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mrow>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						<br>
+						We are able to bring out the 
+						<math>
+						<mi>V</mi>
+						</math>
+						for 
+						<math>
+						<mi>V</mi><mo>(</mo>
+						<mfrac>
+							<mn>1</mn>
+							<msub><mi>R</mi><mn>1</mn></msub>
+						</mfrac>
+						<mo>+</mo>
+						<mfrac>
+							<mn>1</mn>
+							<msub><mi>R</mi><mn>2</mn></msub>
+						</mfrac>
+						<mo>)</mo>
+						</math>
+						as Kirchhoff's Voltage Law states that the sum of voltage drops around any closed circuit is zero, and as the circuit is in parallel the voltage will be the same for all paths.
+						<br>
+						<br>
+						Some may find it helpful to think in terms of <strong>conductance</strong>,
+						<math>
+						<mi>G</mi><mo>=</mo>
+						<mfrac>
+							<mn>1</mn>
+							<mi>R</mi>
+						</mfrac>
+						</math>
+						<br>
+						Then plugging it into Ohm’s law replacing
+						<math>
+						<mi>R</mi>
+						</math>
+						we get,
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo><mi>G</mi><mi>V</mi>
+						</math>
+						<br>
+						The unit of <strong>conductance</strong> is the <strong>siemens</strong>
+						<math>
+						<mo>(</mo><mi><strong>S</strong></mi><mo>=</mo>
+						<mfrac>
+							<mn>1</mn>
+							<mi>Ω</mi>
+						</mfrac>
+						<mo>)</mo>
+						</math>
+						also known as the <strong>mho</strong> (<strong>ohm</strong> backwards).
+						<br>
+						<br>
+						Electronic circuits accept some sort of applied input (usually voltage) and produce some sort of corresponding output (usually voltage), this is called the <strong>transfer function H</strong>, the ratio of (measured) output divided by (applied) input.
+						<br>
+						<br>
+						A <strong>voltage divider</strong> is a circuit that takes an <strong>input voltage</strong> and produces an <strong>output voltage</strong> that is a fraction of the input voltage. They are used to generate a specific voltage from a larger voltage.
+						<br>
+						We can create a simple voltage divider circuit by placing two resistors in series, and we can find the output voltage between the two resistors,
+						<br>
+						First, we find the current,
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo>
+						<mfrac>
+							<msub><mi>V</mi><mi>in</mi></msub>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						<br>
+						Then, we can just plug it into the equation for voltage to get the output voltage, with
+						<math>
+							<msub><mi>R</mi><mn>2</mn></msub>
+						</math>
+						being the resistance as we are looking at the point <strong>between</strong> the two resistors, meaning we are already past the first resistor
+						<br>
+						<math>
+						<msub><mi>V</mi><mi>out</mi></msub><mo>=</mo><mi>I</mi><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo>
+						<mfrac>
+							<msub><mi>V</mi><mi>in</mi></msub>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						<msub><mi>R</mi><mn>2</mn></msub>
+						<mo>=</mo><msub><mi>V</mi><mi>in</mi></msub>
+						<mfrac>
+							<msub><mi>R</mi><mn>2</mn></msub>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						we can rewrite this as,
+						<br>
+						<math>
+						<mfrac>
+							<msub><mi>V</mi><mi>out</mi></msub>
+							<msub><mi>V</mi><mi>in</mi></msub>
+						</mfrac>
+						<mo>=</mo>
+						<mfrac>
+							<msub><mi>R</mi><mn>2</mn></msub>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						which is the transfer function <strong>H</strong> for this circuit.
+						<br>
+						<br>
+						<strong>Thévenin equivalent circuit</strong>, Thévenin theorem states that any two-terminal network of resistors and voltage sources is equivalent to a single resistor in series with a single voltage source.
+						<br>
+						This means that any combination of batteries and resistors can be mimicked with one battery and one resistor (in a two-terminal network).
+						<br>
+						<br>
+						To build an equivalent circuit, we need two things: the open-circuit voltage (<math><msub><mi>V</mi><mi>Th</mi></msub></math>) and total resistance of between two terminals (<math><msub><mi>R</mi><mi>Th</mi></msub></math>).
+						<br>
+						<em>What is open-circuit and short-circuit voltage?</em>
+						<br>
+						An open-circuit voltage is the electrical potential difference (i.e. voltage) between two terminals, imagine a battery and the voltage between the positive and negative end.
+						<br>
+						<math><msub><mi>V</mi><mi>Th</mi></msub><mo>=</mo><mi>V</mi></math>(open circuit)
+						<br>
+						A short-circuit is the maximum possible current between two terminals.
+						<br>
+						We can find the maximum current between two terminals through Ohm’s law,
+						<br>
+						<math><mi>I</mi></math> (short circuit) 
+						<math>
+						<mo>=</mo>
+						<mfrac>
+							<mrow><mi>V</mi><mtext>(open circuit)</mtext></mrow>
+							<msub><mi>R</mi><mi>Th</mi></msub>
+						</mfrac>
+						</math>
+						and in-turn, we can rewrite the equation to find
+						<math><msub><mi>R</mi><mi>Th</mi></msub></math>
+						<br>
+						<math>
+						<msub><mi>R</mi><mi>Th</mi></msub><mo>=</mo>
+						<mfrac>
+							<mrow><mi>V</mi><mtext>(open circuit)</mtext></mrow>
+							<mrow><mi>I</mi><mtext>(short circuit)</mtext></mrow>
+						</mfrac>
+						</math>
+						<br>
+						<br>
+						As an example, let's take the voltage divider circuit we used earlier looking at the point between the two resistors.
+						<br>
+						The open-circuit voltage is,
+						<br>
+						<math>
+						<mi>V</mi><mo>=</mo><msub><mi>V</mi><mi>in</mi></msub>
+						<mfrac>
+							<msub><mi>R</mi><mn>2</mn></msub>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						<br>
+						The short-circuit current is,
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo>
+						<mfrac>
+							<msub><mi>V</mi><mi>in</mi></msub>
+							<msub><mi>R</mi><mn>1</mn></msub>
+						</mfrac>
+						</math>
+						as it is short-circuited
+						<math><msub><mi>R</mi><mn>2</mn></msub></math>
+						is not interacted with and left out of the equation
+						<br>
+						So the Thévenin equivalent circuit is a voltage source,
+						<br>
+						<math>
+						<msub><mi>V</mi><mi>Th</mi></msub><mo>=</mo><msub><mi>V</mi><mi>in</mi></msub>
+						<mfrac>
+							<msub><mi>R</mi><mn>2</mn></msub>
+							<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+						</mfrac>
+						</math>
+						in series with a resistor
+						<br>
+						<math>
+						<msub><mi>R</mi><mi>Th</mi></msub><mo>=</mo>
+						<mfrac>
+							<mi>V</mi>
+							<mi>I</mi>
+						</mfrac>
+						<mo>=</mo>
+						<mfrac>
+							<mrow>
+								<msub><mi>V</mi><mi>in</mi></msub>
+								<mfrac>
+									<msub><mi>R</mi><mn>2</mn></msub>
+									<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+								</mfrac>
+							</mrow>
+							<mfrac>
+								<msub><mi>V</mi><mi>in</mi></msub>
+								<msub><mi>R</mi><mn>1</mn></msub>
+							</mfrac>
+						</mfrac>
+						<mo>=</mo><msub><mi>V</mi><mi>in</mi></msub>
+							<mfrac>
+								<msub><mi>R</mi><mn>2</mn></msub>
+								<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+							</mfrac>
+							<mfrac>
+								<msub><mi>R</mi><mn>1</mn></msub>
+								<msub><mi>V</mi><mi>in</mi></msub>
+							</mfrac>
+						<mo>=</mo>
+							<mfrac>
+								<mrow><msub><mi>R</mi><mn>1</mn></msub><msub><mi>R</mi><mn>2</mn></msub></mrow>
+								<mrow><msub><mi>R</mi><mn>1</mn></msub><mo>+</mo><msub><mi>R</mi><mn>2</mn></msub></mrow>
+							</mfrac>
+						</math>
+						<br>
+						(<strong>Note:</strong> It is not a coincidence that this happens to be the parallel resistance of <math><msub><mi>R</mi><mn>1</mn></msub></math> and <math><msub><mi>R</mi><mn>2</mn></msub></math>)
+						<br>
+						<br>
+						<em>This is all assuming there is no device/load resistor connected, what happens when we actually connect something?</em>
+						<br>
+						What happens is that the load will run in parallel with <math><msub><mi>R</mi><mn>2</mn></msub></math> and total resistance falls which increases current, causing <math><msub><mi>R</mi><mn>1</mn></msub></math> to absorb and drop the voltage below what is expected by the ideal <math><msub><mi>V</mi><mi>Th</mi></msub></math> unloaded voltage output. 
+						<br>
+						From a Thévenin perspective this is due to the source resistance <math><msub><mi>R</mi><mi>Th</mi></msub></math> (Thévenin equivalent resistance of the voltage divider output, viewed as a source of voltage).
+						<br>
+						(<strong>Note:</strong> The terms source resistance, internal resistance, and Thévenin equivalent resistance all mean the same thing)
+						<br>
+						<br>
+						There are different approaches to dealing with this issue, one is to use much smaller resistors in a voltage divider. Lower resistance will reduce <math><msub><mi>R</mi><mi>Th</mi></msub></math> but will waste more power as heat.
+						<br>
+						However, it is usually best to construct a voltage source/power supply, using active components like transistors or operational amplifiers.
+						<br>
+						This allows for a voltage source with internal (Thévenin equivalent) resistance as small as milliohms (thousandths of an ohm) without the large current and lost heat from low-resistance resistors.
+						<br>
+						<br>
+						<em>What would happen if I attach a load that has a resistance less than or similar to the internal resistance?</em>
+						<br>
+						We can determine this from a Thévenin perspective,
+						<br>
+						<math>
+						<msub><mi>V</mi><mi>out</mi></msub><mo>=</mo><msub><mi>V</mi><mi>Th</mi></msub>
+						<mfrac>
+							<msub><mi>R</mi><mi>load</mi></msub>
+							<mrow><msub><mi>R</mi><mi>Th</mi></msub><mo>+</mo><msub><mi>R</mi><mi>load</mi></msub></mrow>
+						</mfrac>
+						</math>
+						<br>
+						As we can see the larger the load resistance, the less the internal resistance matters leading to only a small reduction in output voltage, and a small load resistance leading to significant reduction of output voltage.
+						<br>
+						(<strong>Note:</strong> circuits are ordinarily designed so that the <strong>load resistance</strong> is much <strong>greater</strong> than the <strong>source resistance</strong> of the signal that drives the load)
+						<br>
+						<br>
+						You may have noticed that all these equations assume that the resistor will have a current (<strong>I</strong>) that is proportional to applied voltage (<strong>V</strong>); this is called a <strong>linear</strong> resistor. But, we often deal with electronics devices where <strong>I</strong> is not proportional to <strong>V</strong>; it will be more useful to know the slope of the <strong>V-I curve</strong> to calculate resistance.
+						<br>
+						This can be written as the ratio of a small change in applied voltage to the resulting change in current through the device,
+						<br>
+						<math>
+						<mfrac>
+							<mrow><mi>Δ</mi><mi>V</mi></mrow>
+							<mrow><mi>Δ</mi><mi>I</mi></mrow>
+						</mfrac>
+						</math>
+						or
+						<math>
+						<mfrac>
+							<mrow><mi>d</mi><mi>V</mi></mrow>
+							<mrow><mi>d</mi><mi>I</mi></mrow>
+						</mfrac>
+						</math>
+						<br>
+						This is called the small-signal resistance, incremental resistance, or dynamic resistance.
+						<br>
+						<br>
+						An example of non-linear I-V curve is a <strong>zener diode</strong>, a zener is used to create a constant voltage inside a circuit. 
+						<br>
+						The figure is attached below that shows that it blocks all current until the voltage reaches a certain level (zener voltage), and keeps it at that voltage level (until it exceeds its power rating)
+						<br>
+						<br>
+						<img 
+						   src="/zener_diode_vi_graph.png" 
+						   alt="Zener Diode V-I Graph" 
+						   class="mx-auto border-4 border-black rounded-lg shadow-[4px_4px_0_#000]"
+						>
+						<br>
+						In real life, the applied current is never perfectly steady and will fluctuate. 
+						<br>
+						How well the zener diode can handle changes in driving current is called “<strong>regulation</strong>”, which will be included in the zener’s specification called <strong>dynamic resistance</strong>, given at a certain current. 
+						<br>
+						Let’s take a zener with a dynamic resistance of <strong>10Ω</strong> at <strong>10mA,</strong> at its specified zener voltage of <strong>5V</strong>.
+						<br>
+						Imagine there is a <strong>10%</strong> fluctuation in the current, using Ohm’s law with dynamic resistance,
+						<br>
+						<math><mi>Δ</mi><mi>V</mi><mo>=</mo><mi>Δ</mi><mi>I</mi><msub><mi>R</mi><mi>dyn</mi></msub><mo>=</mo><mn>0.1</mn><mo>*</mo><mn>10</mn><mo>*</mo><mn>0.01</mn><mo>=</mo><mn>10</mn><mi>m</mi><mi>V</mi></math>
+						<br>
+						Or 
+						<br>
+						<math>
+							<mfrac>
+								<mrow><mi>Δ</mi><mi>V</mi></mrow>
+								<mi>V</mi>
+							</mfrac>
+						<mo>=</mo>
+							<mfrac>
+								<mrow><mn>10</mn><mi>m</mi><mi>V</mi></mrow>
+								<mrow><mn>5</mn><mi>V</mi></mrow>
+							</mfrac>
+						<mo>=</mo>
+							<mfrac>
+								<mrow><mn>0.01</mn><mi>V</mi></mrow>
+								<mrow><mn>5</mn><mi>V</mi></mrow>
+							</mfrac>
+							<mo>=</mo><mn>0.002</mn><mo>=</mo><mn>0.2</mn><mi>%</mi>
+						</math>
+						<br>
+						thus demonstrating good voltage-regulating ability.
+						<br>
+						A zener often gets its current through a resistor from a higher voltage in the circuit.
+						<br>
+						We can find the voltage output by first finding the current,
+						<br>
+						<math>
+						<mi>I</mi><mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>V</mi><mi>in</mi></msub><mo>-</mo><msub><mi>V</mi><mi>out</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						</math>
+						<br>
+						And since in real life the voltage fluctuates we use dynamic resistance,
+						</p>
+						<math>
+						<mi>Δ</mi><mi>I</mi><mo>=</mo>
+						<mfrac>
+						<mrow><mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub><mo>-</mo><mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						</math>
+						<br>
+						Then using Ohm’s law with dynamic resistance,
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub><mo>=</mo><mi>Δ</mi><mi>I</mi><msub><mi>R</mi><mi>dyn</mi></msub><mo>=</mo>
+						<mfrac>
+						<mrow><mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub><mo>-</mo><mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<msub><mi>R</mi><mi>dyn</mi></msub><mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mo>(</mo><mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub><mo>-</mo><mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub><mo>)</mo><mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub><mspace width="0.2em"/><mo>-</mo><mspace width="0.2em"/>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						</math>
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub><mo>+</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						<mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub>
+						</math>
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						<mo>(</mo><mi>1</mi><mo>+</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mo>)</mo>
+						<mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub>
+						</math>
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						<mo>(</mo>
+						<mfrac>
+							<mi>R</mi>
+							<mi>R</mi>
+						</mfrac>
+						<mo>+</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mo>)</mo>
+						<mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub>
+						</math>
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						<mfrac>
+							<mrow><mi>R</mi><mo>+</mo><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub>
+						</math>
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						<mo>=</mo>
+						<mfrac>
+							<mi>R</mi>
+							<mrow><mi>R</mi><mo>+</mo><msub><mi>R</mi><mi>dyn</mi></mrow>
+						</mfrac>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mi>R</mi>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub>
+						</math>
+						<br>
+						<math>
+						<mi>Δ</mi><msub><mi>V</mi><mi>out</mi></msub>
+						<mo>=</mo>
+						<mfrac>
+							<mrow><msub><mi>R</mi><mi>dyn</mi></msub></mrow>
+							<mrow><mi>R</mi><mo>+</mo><msub><mi>R</mi><mi>dyn</mi></mrow>
+						</mfrac>
+						<mi>Δ</mi><msub><mi>V</mi><mi>in</mi></msub>
+						</math>
+						<br>
+						<br>
+						It’s the voltage-divider equation, again! 
+						<br>
+						This means for changes in voltage, the circuit behaves like a voltage divider, with the zener replaced by a resistor equal to its dynamic resistance at the operating current.
+						<br>
+						A useful fact, when dealing with zener diodes, is that the dynamic resistance of a zener diode varies roughly in inverse proportion to current.
+						<br>
+						<br>
+						There are ICs designed to substitute for zener diodes, known as “two-terminal voltage references” that have much lower dynamic resistance and excellent temperature stability.
+						<br>
+						A zener will provide better regulation if driven by a current source, but current sources are more complex, and in practice we use a resistor.
+						<br>
+						(<strong>Note:</strong> When working with zeners, it’s worth remembering that low-voltage units (e.g. 3.3 V) behave rather poorly, in terms of constancy of voltage versus current, use a two-terminal reference instead)
+						<br>
+						<br>
+						And that’s it for this week!
+						<br>
+						The next post will be covering section 1.3 on signals.
+					</article>
+				</main>
+			</div>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
+
